@@ -1,6 +1,6 @@
 package logic;
 
 public interface Billable {
-	float getPrice();
+	double getPrice();
 	String getName();
 }

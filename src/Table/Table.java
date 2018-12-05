@@ -20,7 +20,10 @@ public abstract class Table implements Billable {
 		return total;
 	}
 	
-	public abstract float getPrice();
+	/**
+	 * Get service charge for table
+	 */
+	public abstract double getPrice();
 
 	public abstract String getName();
 }
