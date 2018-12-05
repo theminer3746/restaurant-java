@@ -8,13 +8,15 @@ public abstract class Table implements Billable {
 	protected ArrayList<Billable> billable;
 	protected int guestAmount;
 	
-	public float getTotal() {
-		float total = 0;
+	public double getBillableTotal() {
+		double total = 0;
 		
 		for(Billable item : this.billable) {
 			total += item.getPrice();
 		}
 		
+		return total;
+	}
 		total += getPrice();
 		
 		return total;
