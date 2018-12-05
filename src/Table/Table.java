@@ -17,6 +17,12 @@ public abstract class Table implements Billable {
 		
 		return total;
 	}
+	
+	public double getTotal() {
+		double total = 0;
+		
+		total += getBillableTotal();
+		
 		total += getPrice();
 		
 		return total;
