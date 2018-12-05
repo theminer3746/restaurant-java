@@ -1,12 +1,12 @@
-package logic;
+package Table;
 
 import java.util.ArrayList;
+
+import logic.Billable;
 
 public abstract class Table implements Billable {
 	protected ArrayList<Billable> billable;
 	protected int guestAmount;
-	
-	public abstract float getServiceCharge(); 
 	
 	public float getTotal() {
 		float total = 0;
@@ -15,7 +15,7 @@ public abstract class Table implements Billable {
 			total += item.getPrice();
 		}
 		
-		total += getServiceCharge();
+		total += getPrice();
 		
 		return total;
 	}
