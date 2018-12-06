@@ -6,6 +6,7 @@ import logic.Billable;
 
 public abstract class Table implements Billable {
 	protected Bill bill;
+	protected String tableNumber;
 	protected int guestAmount;
 	protected int maximumGuest;
 
@@ -22,9 +23,17 @@ public abstract class Table implements Billable {
 	public abstract double getPrice();
 
 	public abstract double calculateServiceCharge(double bill);
-	
+
 	public double getTotal() {
 		return bill.getBillableTotal() + getPrice();
+	}
+
+	public String getTableNumber() {
+		return tableNumber;
+	}
+
+	public void setTableNumber(String tableNumber) {
+		this.tableNumber = tableNumber;
 	}
 
 	public int getGuestAmount() {
