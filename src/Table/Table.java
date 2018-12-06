@@ -3,39 +3,29 @@ package Table;
 import java.util.ArrayList;
 
 import Exception.NotEnoughSeatException;
+import logic.Bill;
 import logic.Billable;
 
 public abstract class Table implements Billable {
-	protected ArrayList<Billable> billable;
+	protected Bill bill;
 	protected int guestAmount;
 	protected int maximumGuest;
 
-	public double getBillableTotal() {
-		double total = 0;
-
-		for (Billable item : this.billable) {
-			total += item.getPrice();
-		}
-
-		return total;
+	public Table() {
+		this.bill = new Bill();
 	}
 
-	public double getTotal() {
-		double total = 0;
-
-		total += getBillableTotal();
-
-		total += getPrice();
-
-		return total;
+	public Table(Bill bill) {
+		this.bill = bill;
 	}
-
-	/**
-	 * Get service charge for table
-	 */
-	public abstract double getPrice();
 
 	public abstract String getName();
+
+	public abstract double getPrice();
+
+	public double getTotal() {
+		return bill.getBillableTotal() + getPrice();
+	}
 
 	public int getGuestAmount() {
 		return guestAmount;
