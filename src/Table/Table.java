@@ -1,7 +1,5 @@
 package Table;
 
-import java.util.ArrayList;
-
 import Exception.NotEnoughSeatException;
 import logic.Bill;
 import logic.Billable;
