@@ -15,14 +15,12 @@ public class Order implements Billable {
 
 	@Override
 	public double getPrice() {
-		// TODO Auto-generated method stub
-		return 0;
+		return amount * menu.getPrice();
 	}
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
+		return amount + " * " + menu.getName();
 	}
 
 	public Menu getMenu() {
