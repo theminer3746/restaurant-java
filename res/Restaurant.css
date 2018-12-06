@@ -1,7 +1,45 @@
-.customButton  {
-    -fx-background-color: #CCFF99;
+.normalTable  {
+    -fx-background-color:
+        linear-gradient(#f0ff35, #a9ff00),
+        radial-gradient(center 50% -40%, radius 200%, #b8ee36 45%, #80c800 50%);
+    -fx-pref-width: 30px;
+    -fx-pref-height: 20px;
+    -fx-text-fill: black;
 }
 
-.customButton1  {
-    -fx-background-color: #000000;
+.seatedNormalTable  {
+    -fx-background-color: #ff0000;
+    -fx-pref-width: 30px;
+    -fx-pref-height: 20px;
+    -fx-text-fill: white;
+}
+.privateTable  {
+    -fx-background-color:
+        linear-gradient(#f0ff35, #a9ff00),
+        radial-gradient(center 50% -40%, radius 200%, #b8ee36 45%, #80c800 50%);
+    -fx-pref-width: 30px;
+    -fx-pref-height: 20px;
+    -fx-text-fill: black;
+}
+
+.seatedPrivateTable  {
+    -fx-background-color: #ff0000;
+    -fx-pref-width: 30px;
+    -fx-pref-height: 20px;
+    -fx-text-fill: white;
+}
+.Table  {
+    -fx-background-color:
+        linear-gradient(#f0ff35, #a9ff00),
+        radial-gradient(center 50% -40%, radius 200%, #b8ee36 45%, #80c800 50%);
+    -fx-pref-width: 30px;
+    -fx-pref-height: 20px;
+    -fx-text-fill: black;
+}
+
+.seatedTable  {
+    -fx-background-color: #ff0000;
+    -fx-pref-width: 30px;
+    -fx-pref-height: 20px;
+    -fx-text-fill: white;
 }

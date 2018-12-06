@@ -5,19 +5,20 @@ import javafx.scene.layout.HBox;
 
 public class Tabs extends HBox {
 	
-	public Tabs() {
+	public Tabs(TableGrid tableGrid) {
 		setSpacing(5);
+
 		
 		Button counterBtn = new Button("Counter");
-		//counterBtn.getStyleClass().add("customButton");
+		//counterBtn.getStyleClass().add("Table");
 		counterBtn.setOnAction(e -> {
-			//tableGrid.setVisible(true);
+			tableGrid.setVisible(true);
 			/////
 		});
 		
 		Button kitchenBtn = new Button("Kitchen");
 		kitchenBtn.setOnAction(e -> {
-			//tableGrid.setVisible(false);
+			tableGrid.setVisible(false);
 			/////
 		});
 		
