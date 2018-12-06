@@ -5,7 +5,7 @@ public class PrivateTable extends Table {
 
 	@Override
 	public double getPrice() {
-		return this.guestAmount * SERVICE_CHARGE_RATE * getBillableTotal();
+		return this.guestAmount * SERVICE_CHARGE_RATE * bill.getBillableTotal();
 	}
 
 	@Override

@@ -5,7 +5,7 @@ public class NormalTable extends Table {
 
 	@Override
 	public double getPrice() {
-		return getBillableTotal() * SERVICE_CHARGE_RATE;
+		return bill.getBillableTotal() * SERVICE_CHARGE_RATE;
 	}
 
 	@Override
