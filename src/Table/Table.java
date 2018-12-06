@@ -9,27 +9,27 @@ public abstract class Table implements Billable {
 	protected ArrayList<Billable> billable;
 	protected int guestAmount;
 	protected int maximumGuest;
-	
+
 	public double getBillableTotal() {
 		double total = 0;
-		
-		for(Billable item : this.billable) {
+
+		for (Billable item : this.billable) {
 			total += item.getPrice();
 		}
-		
+
 		return total;
 	}
-	
+
 	public double getTotal() {
 		double total = 0;
-		
+
 		total += getBillableTotal();
-		
+
 		total += getPrice();
-		
+
 		return total;
 	}
-	
+
 	/**
 	 * Get service charge for table
 	 */
@@ -42,10 +42,10 @@ public abstract class Table implements Billable {
 	}
 
 	public void setGuestAmount(int guestAmount) throws NotEnoughSeatException {
-		if(guestAmount > maximumGuest) {
+		if (guestAmount > maximumGuest) {
 			throw new NotEnoughSeatException();
 		}
-		
+
 		this.guestAmount = guestAmount;
 	}
 
