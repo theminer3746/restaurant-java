@@ -21,6 +21,8 @@ public abstract class Table implements Billable {
 
 	public abstract double getPrice();
 
+	public abstract double calculateServiceCharge(double bill);
+	
 	public double getTotal() {
 		return bill.getBillableTotal() + getPrice();
 	}
