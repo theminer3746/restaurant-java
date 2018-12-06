@@ -5,6 +5,10 @@ import java.util.ArrayList;
 public class Bill {
 	private ArrayList<Billable> billable;
 
+	public Bill() {
+		billable = new ArrayList<Billable>();
+	}
+
 	public void addToBill(Billable billable) {
 		this.billable.add(billable);
 	}
