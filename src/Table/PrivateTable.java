@@ -3,6 +3,10 @@ package Table;
 public class PrivateTable extends Table {
 	private final double SERVICE_CHARGE_RATE = 0.07;
 
+	public PrivateTable(String tableNumber, int maximumGuest) {
+		super(tableNumber, maximumGuest);
+	}
+
 	@Override
 	public double calculateServiceCharge(double price) {
 		return this.guestAmount * SERVICE_CHARGE_RATE * price;
