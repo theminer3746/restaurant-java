@@ -28,6 +28,14 @@ public abstract class Table implements Billable {
 		return bill.getBillableTotal() + getPrice();
 	}
 
+	public Bill getBill() {
+		return bill;
+	}
+
+	public void setBill(Bill bill) {
+		this.bill = bill;
+	}
+
 	public String getTableNumber() {
 		return tableNumber;
 	}
