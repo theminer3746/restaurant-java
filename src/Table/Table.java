@@ -10,12 +10,10 @@ public abstract class Table implements Billable {
 	protected int guestAmount;
 	protected int maximumGuest;
 
-	public Table() {
+	public Table(String tableNumber, int maximumGuest) {
 		this.bill = new Bill();
-	}
-
-	public Table(Bill bill) {
-		this.bill = bill;
+		this.tableNumber = tableNumber;
+		this.maximumGuest = maximumGuest;
 	}
 
 	public abstract String getName();
