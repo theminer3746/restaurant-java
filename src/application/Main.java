@@ -51,8 +51,6 @@ public class Main extends Application {
 		root.setMinWidth(250);
 		root.setMinHeight(400);
 		
-		 
-		
 		Tabs tabs = new Tabs(root, tableGrid, kitchen);
 		root.getChildren().addAll(tabs);
 		

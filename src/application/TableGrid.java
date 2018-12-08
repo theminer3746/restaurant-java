@@ -12,9 +12,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 //import java.util.ArrayList;
@@ -28,7 +31,8 @@ public class TableGrid extends GridPane {
 	public TableGrid() {
 		setHgap(5);
 		setVgap(5);
-		setMinSize(100, 100);
+		setMinSize(300, 500);
+		setBackground(new Background(new BackgroundFill(Color.IVORY, null, null)));
 		
 		AddTable(new NormalTable("6", 6), 0, 0);
 		AddTable(new PrivateTable("7", 8), 2, 2);
