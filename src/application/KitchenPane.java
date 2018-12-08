@@ -75,7 +75,7 @@ public class KitchenPane extends VBox {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
-	
+
 	public void addToBill(Billable billable) {
 		this.billable.add(billable);
 	}

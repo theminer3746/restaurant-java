@@ -44,10 +44,9 @@ public class TableGrid extends GridPane {
 		AddTable(privateTable);
 
 		/// check after josn file implemented
-		/*for (Table table : tableList.getTables()) {
-			AddTable(table);
-		}*/
-		
+		/*
+		 * for (Table table : tableList.getTables()) { AddTable(table); }
+		 */
 
 		this.status = false;
 	}
@@ -55,7 +54,7 @@ public class TableGrid extends GridPane {
 	public void AddTable(Table table) {
 		Button tableBtn = new Button(table.getTableNumber());
 		tableBtn.getStyleClass().add(table.getClass().getSimpleName());
-		
+
 		tableBtn.setOnAction(e -> {
 			if (table.getGuestAmount() <= 0) {
 				Stage stage = new Stage();
@@ -80,7 +79,7 @@ public class TableGrid extends GridPane {
 						if (amount <= 0) {
 							Notify notify = new Notify(AlertType.ERROR);
 							notify.showNegativeCustomerAmountError();
-							
+
 						} else {
 							table.setGuestAmount(amount);
 							tableBtn.getStyleClass().clear();
@@ -92,7 +91,7 @@ public class TableGrid extends GridPane {
 						if (text.getText().isEmpty()) {
 							Notify notify = new Notify(AlertType.ERROR);
 							notify.showEmptyCustomerTextFieldError();
-							
+
 						} else {
 							Notify notify = new Notify(AlertType.ERROR);
 							notify.showIncorrectCustomerAmountFormatError();
@@ -137,11 +136,11 @@ public class TableGrid extends GridPane {
 						checkWindow.setSpacing(5);
 						checkWindow.setPadding(new Insets(5));
 						checkWindow.setAlignment(Pos.CENTER_LEFT);
-						
+
 						/*
 						 * 
 						 */
-						
+
 						checkStage.setTitle("Check");
 						checkStage.setScene(checkScene);
 						checkStage.show();
@@ -169,12 +168,12 @@ public class TableGrid extends GridPane {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
-	
+
 	public void setGrid() {
 		for (int i = 0; i < 8; i++) {
 			getColumnConstraints().add(new ColumnConstraints(40));
 		}
-		
+
 		for (int i = 0; i < 9; i++) {
 			getRowConstraints().add(new RowConstraints(40));
 		}

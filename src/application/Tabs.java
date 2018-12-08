@@ -5,17 +5,16 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class Tabs extends HBox {
-	
+
 	public Tabs(VBox root, TableGrid tableGrid, KitchenPane kitchen) {
 		setSpacing(5);
 
-		
 		Button counterBtn = new Button("Counter");
 		counterBtn.setOnAction(e -> {
 			boolean gridStatus = tableGrid.getStatus();
 			boolean kitchenStatus = kitchen.getStatus();
 			if (gridStatus == true) {
-				
+
 			} else if (gridStatus == false && kitchenStatus == false) {
 				root.getChildren().add(tableGrid);
 			} else {
@@ -25,13 +24,13 @@ public class Tabs extends HBox {
 			tableGrid.setStatus(true);
 			kitchen.setStatus(false);
 		});
-		
+
 		Button kitchenBtn = new Button("Kitchen");
 		kitchenBtn.setOnAction(e -> {
 			boolean gridStatus = tableGrid.getStatus();
 			boolean kitchenStatus = kitchen.getStatus();
 			if (kitchenStatus == true) {
-				
+
 			} else if (gridStatus == false && kitchenStatus == false) {
 				root.getChildren().add(kitchen);
 			} else {
@@ -41,12 +40,12 @@ public class Tabs extends HBox {
 			tableGrid.setStatus(false);
 			kitchen.setStatus(true);
 		});
-		
+
 		Button closeBtn = new Button("Close");
 		closeBtn.setOnAction(e -> {
 			System.exit(0);
 		});
-		
+
 		getChildren().addAll(counterBtn, kitchenBtn, closeBtn);
 	}
 

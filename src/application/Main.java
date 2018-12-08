@@ -24,9 +24,9 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		
+
 		restaurant = Restaurant.getInstance();
-		
+
 		tableGrid = new TableGrid(restaurant.getTableList());
 		kitchen = new KitchenPane();
 
