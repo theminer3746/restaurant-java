@@ -15,8 +15,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -27,13 +29,15 @@ public class TableGrid extends GridPane {
 	boolean status;
 	
 	public TableGrid() {
-		setHgap(5);
-		setVgap(5);
-		setMinSize(300, 500);
+		setGrid();
+		/*setHgap(5);
+		setVgap(5);*/
+		setMinSize(300, 350);
 		setBackground(new Background(new BackgroundFill(Color.IVORY, null, null)));
 		
+		
 		AddTable(new NormalTable("6", 6), 0, 0);
-		AddTable(new PrivateTable("7", 8), 2, 2);
+		AddTable(new PrivateTable("10", 8), 2, 0);
 
 		/*for (Table table : tables) {
 			///go through tables arraylist and add new tableBtn
@@ -56,7 +60,6 @@ public class TableGrid extends GridPane {
 		} else {
 			tableBtn.getStyleClass().add(table.getClass().getSimpleName());
 
-			
 		}
 		tableBtn.setOnAction(e -> {
 			if (table.getGuestAmount() <= 0) {
@@ -178,6 +181,16 @@ public class TableGrid extends GridPane {
 	
 	public void setStatus(boolean status) {
 		this.status = status;
+	}
+	
+	public void setGrid() {
+		for (int i = 0; i < 8; i++) {
+			getColumnConstraints().add(new ColumnConstraints(40));
+		}
+		
+		for (int i = 0; i < 9; i++) {
+			getRowConstraints().add(new RowConstraints(40));
+		}
 	}
 
 }
