@@ -3,8 +3,10 @@
         linear-gradient(#f0ff35, #a9ff00),
         radial-gradient(center 50% -40%, radius 200%, #b8ee36 45%, #80c800 50%);
     -fx-pref-width: 30px;
-    -fx-pref-height: 20px;
+    -fx-pref-height: 25px;
+    -fx-background-radius: 5;
     -fx-text-fill: black;
+    -fx-alignment: CENTER;
 }
 
 .SeatedNormalTable  {
@@ -22,8 +24,10 @@
         linear-gradient(#f0ff35, #a9ff00),
         radial-gradient(center 50% -40%, radius 200%, #b8ee36 45%, #80c800 50%);
     -fx-pref-width: 35px;
-    -fx-pref-height: 25px;
+    -fx-pref-height: 30px;
+    -fx-background-radius: 5;
     -fx-text-fill: black;
+    -fx-alignment: CENTER;
 }
 
 .SeatedPrivateTable  {
@@ -35,22 +39,4 @@
     -fx-background-radius: 5;
     -fx-text-fill: white;
     -fx-alignment: CENTER;
-}
-.Table  {
-    -fx-background-color:
-        linear-gradient(#f0ff35, #a9ff00),
-        radial-gradient(center 50% -40%, radius 200%, #b8ee36 45%, #80c800 50%);
-    -fx-pref-width: 30px;
-    -fx-pref-height: 20px;
-    -fx-text-fill: black;
-}
-
-.SeatedTable  {
-    -fx-background-color: 
-    	linear-gradient(#ff5400, #be1d00),
-    	radial-gradient(center 50% -40%, radius 200%, #ff5400 45%, #be1d00 50%);
-    -fx-pref-width: 30px;
-    -fx-pref-height: 25px;
-    -fx-background-radius: 5;
-    -fx-text-fill: white;
 }
