@@ -17,4 +17,12 @@ public class Restaurant {
 		
 		return instance;
 	}
+
+	public TableList getTableList() {
+		return tableList;
+	}
+
+	public void setTableList(TableList tableList) {
+		this.tableList = tableList;
+	}
 }
