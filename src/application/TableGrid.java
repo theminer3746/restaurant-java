@@ -110,11 +110,8 @@ public class TableGrid extends GridPane {
 							alert.show();
 						}
 					} catch (NotEnoughSeatException e1) {
-						Alert alert = new Alert(AlertType.ERROR);
-						alert.setTitle("Error");
-						alert.setHeaderText("Error");
-						alert.setContentText("The Amount Of Customers Exceed The Available Seats (" + e1.getMaxSeat() + ")");
-						alert.show();
+						Notify notify = new Notify(AlertType.ERROR);
+						notify.showGuestExceedCapacity(e1.getMaxSeat());
 					}
 				});
 				Button cancel = new Button("Cancel");
