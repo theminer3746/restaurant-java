@@ -15,4 +15,12 @@ public class Kitchen {
 		
 		return instance;
 	}
+
+	public OrderList getOrderList() {
+		return orderList;
+	}
+
+	public void setOrderList(OrderList orderList) {
+		this.orderList = orderList;
+	}
 }
