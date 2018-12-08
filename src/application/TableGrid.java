@@ -28,8 +28,10 @@ public class TableGrid extends GridPane {
 	boolean status;
 
 	public TableGrid() {
-		/*setHgap(5);
-		setVgap(5);*/
+		setGrid();
+		/*
+		 * setHgap(5); setVgap(5);
+		 */
 		setMinSize(300, 350);
 		setBackground(new Background(new BackgroundFill(Color.IVORY, null, null)));
 
@@ -174,6 +176,14 @@ public class TableGrid extends GridPane {
 		this.status = status;
 	}
 	
-	
+	public void setGrid() {
+		for (int i = 0; i < 8; i++) {
+			getColumnConstraints().add(new ColumnConstraints(40));
+		}
+		
+		for (int i = 0; i < 9; i++) {
+			getRowConstraints().add(new RowConstraints(40));
+		}
+	}
 
 }
