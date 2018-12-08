@@ -4,6 +4,7 @@ import Exception.NotEnoughSeatException;
 import Table.NormalTable;
 import Table.PrivateTable;
 import Table.Table;
+import Table.TableList;
 //import logic.RestaurantManagement;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -27,7 +28,7 @@ public class TableGrid extends GridPane {
 
 	boolean status;
 
-	public TableGrid() {
+	public TableGrid(TableList tableList) {
 		setGrid();
 		/*
 		 * setHgap(5); setVgap(5);
@@ -35,18 +36,19 @@ public class TableGrid extends GridPane {
 		setMinSize(300, 350);
 		setBackground(new Background(new BackgroundFill(Color.IVORY, null, null)));
 
-		AddTable(new NormalTable("6", 6), 0, 0);
-		AddTable(new PrivateTable("10", 8), 2, 0);
+		/*AddTable(new NormalTable("6", 6), 0, 0);
+		AddTable(new PrivateTable("10", 8), 2, 0);*/
 
-		/*
-		 * for (Table table : tables) { ///go through tables arraylist and add new
-		 * tableBtn }
-		 */
+		/// check after josn file implemented
+		for (Table table : tableList.getTables()) {
+			AddTable(table);
+		}
+		
 
 		this.status = false;
 	}
 
-	public void AddTable(Table table, int xPos, int yPos) {
+	public void AddTable(Table table) {
 		Button tableBtn = new Button(table.getTableNumber());
 
 		if (table instanceof NormalTable) {
@@ -160,7 +162,7 @@ public class TableGrid extends GridPane {
 			}
 
 		});
-		add(tableBtn, xPos, yPos);
+		add(tableBtn, table.getPosx(), table.getPosy());
 	}
 
 	/*
