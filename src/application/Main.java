@@ -17,10 +17,13 @@ public class Main extends Application {
 	private double yOffset = 0;
 	
 	TableGrid tableGrid;
+	Kitchen kitchen;
+	
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		tableGrid = new TableGrid();
+		kitchen = new Kitchen();
 		
 		primaryStage.initStyle(StageStyle.TRANSPARENT);
 		
@@ -50,8 +53,8 @@ public class Main extends Application {
 		
 		 
 		
-		Tabs tabs = new Tabs(tableGrid);
-		root.getChildren().addAll(tabs, tableGrid);
+		Tabs tabs = new Tabs(root, tableGrid, kitchen);
+		root.getChildren().addAll(tabs);
 		
 		primaryStage.setTitle("Restaurant");
 		primaryStage.setScene(scene);
