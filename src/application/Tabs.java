@@ -6,12 +6,11 @@ import javafx.scene.layout.VBox;
 
 public class Tabs extends HBox {
 	
-	public Tabs(VBox root, TableGrid tableGrid, Kitchen kitchen) {
+	public Tabs(VBox root, TableGrid tableGrid, KitchenPane kitchen) {
 		setSpacing(5);
 
 		
 		Button counterBtn = new Button("Counter");
-		//counterBtn.getStyleClass().add("Table");
 		counterBtn.setOnAction(e -> {
 			boolean gridStatus = tableGrid.getStatus();
 			boolean kitchenStatus = kitchen.getStatus();
