@@ -6,7 +6,7 @@ import Table.Table;
 
 public class RestaurantManagement {
 	private ArrayList<Table> tables;
-	private Menus menus;
+	private MenuList menus;
 
 	public RestaurantManagement() {
 		populateTable();

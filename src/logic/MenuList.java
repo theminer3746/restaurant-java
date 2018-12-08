@@ -2,10 +2,10 @@ package logic;
 
 import java.util.ArrayList;
 
-public class Menus {
+public class MenuList {
 	private ArrayList<Menu> menus;
 
-	public Menus() {
+	public MenuList() {
 		menus = new ArrayList<Menu>();
 	}
 
