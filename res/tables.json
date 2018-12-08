@@ -1,0 +1,27 @@
+[
+    {
+        "number": "01A",
+        "type": "normal",
+        "maxGuest" : 4
+    },
+    {
+        "number": "02A",
+        "type": "normal",
+        "maxGuest": 6
+    },
+    {
+        "number": "03A",
+        "type": "normal",
+        "maxGuest": 8
+    },
+    {
+        "number": "04A",
+        "type": "normal",
+        "maxGuest": 2
+    },
+    {
+        "number": "01B",
+        "type": "private",
+        "maxGuest" : 10
+    }
+]
