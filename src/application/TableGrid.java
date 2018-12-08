@@ -30,8 +30,6 @@ public class TableGrid extends GridPane {
 		setVgap(5);
 		setMinSize(100, 100);
 		
-		/*Table table = new NormalTable("6", 6);
-		Table table2 = new PrivateTable("7", 8);*/
 		AddTable(new NormalTable("6", 6), 0, 0);
 		AddTable(new PrivateTable("7", 8), 2, 2);
 		
@@ -67,7 +65,6 @@ public class TableGrid extends GridPane {
 			
 		}
 		tableBtn.setOnAction(e -> {
-			//int maxGuest = table.getMaximumGuest();
 			if (table.getGuestAmount() <= 0) {
 				Stage stage = new Stage();
 				VBox pane = new VBox();
@@ -134,7 +131,29 @@ public class TableGrid extends GridPane {
 				stage.setScene(scene);
 				stage.show();
 			} else {
-				////
+				Stage stage = new Stage();
+				VBox orderWindow = new VBox();
+				orderWindow.setMinWidth(250);
+				orderWindow.setAlignment(Pos.TOP_CENTER);
+				orderWindow.setPadding(new Insets(5));
+				orderWindow.setSpacing(5);
+				Scene scene = new Scene(orderWindow);
+				
+				Label label = new Label("Menu List");
+				orderWindow.getChildren().add(label);
+				orderWindow.getChildren().add(new OrderInput("Dimsum"));
+				/*
+				 * for (all menu list) {
+				 *      orderWindow.getChildren().add(new OrderInput(menu's name);
+				 * }
+				 */
+				Button close = new Button("Close");
+				close.setOnAction(e1 -> {
+					stage.close();
+				});
+				stage.setTitle("Order(s)");
+				stage.setScene(scene);
+				stage.show();
 			}
 			
 			
