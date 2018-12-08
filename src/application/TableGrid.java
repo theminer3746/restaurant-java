@@ -5,11 +5,9 @@ import Table.NormalTable;
 import Table.PrivateTable;
 import Table.Table;
 import Table.TableList;
-//import logic.RestaurantManagement;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -36,13 +34,19 @@ public class TableGrid extends GridPane {
 		setMinSize(300, 350);
 		setBackground(new Background(new BackgroundFill(Color.IVORY, null, null)));
 
-		/*AddTable(new NormalTable("6", 6), 0, 0);
-		AddTable(new PrivateTable("10", 8), 2, 0);*/
+		Table normalTable = new NormalTable("6", 6);
+		normalTable.setPosx(0);
+		normalTable.setPosy(0);
+		Table privateTable = new PrivateTable("10", 8);
+		privateTable.setPosx(0);
+		privateTable.setPosy(2);
+		AddTable(normalTable);
+		AddTable(privateTable);
 
 		/// check after josn file implemented
-		for (Table table : tableList.getTables()) {
+		/*for (Table table : tableList.getTables()) {
 			AddTable(table);
-		}
+		}*/
 		
 
 		this.status = false;
@@ -50,17 +54,8 @@ public class TableGrid extends GridPane {
 
 	public void AddTable(Table table) {
 		Button tableBtn = new Button(table.getTableNumber());
-
-		if (table instanceof NormalTable) {
-			tableBtn.getStyleClass().add(table.getClass().getSimpleName());
-
-		} else if (table instanceof PrivateTable) {
-			tableBtn.getStyleClass().add(table.getClass().getSimpleName());
-
-		} else {
-			tableBtn.getStyleClass().add(table.getClass().getSimpleName());
-
-		}
+		tableBtn.getStyleClass().add(table.getClass().getSimpleName());
+		
 		tableBtn.setOnAction(e -> {
 			if (table.getGuestAmount() <= 0) {
 				Stage stage = new Stage();
@@ -83,11 +78,9 @@ public class TableGrid extends GridPane {
 					try {
 						int amount = Integer.parseInt(text.getText());
 						if (amount <= 0) {
-							Alert alert = new Alert(AlertType.ERROR);
-							alert.setTitle("Error");
-							alert.setHeaderText("Error");
-							alert.setContentText("The Amount Of Customers Must be Positive");
-							alert.show();
+							Notify notify = new Notify(AlertType.ERROR);
+							notify.showNegativeCustomerAmountError();
+							
 						} else {
 							table.setGuestAmount(amount);
 							tableBtn.getStyleClass().clear();
@@ -97,17 +90,12 @@ public class TableGrid extends GridPane {
 						}
 					} catch (NumberFormatException e1) {
 						if (text.getText().isEmpty()) {
-							Alert alert = new Alert(AlertType.ERROR);
-							alert.setTitle("Message");
-							alert.setHeaderText("Message");
-							alert.setContentText("Please Fill In Customer Amount");
-							alert.show();
+							Notify notify = new Notify(AlertType.ERROR);
+							notify.showEmptyCustomerTextFieldError();
+							
 						} else {
-							Alert alert = new Alert(AlertType.ERROR);
-							alert.setTitle("Error");
-							alert.setHeaderText("Error");
-							alert.setContentText("Incorrect Amount Format");
-							alert.show();
+							Notify notify = new Notify(AlertType.ERROR);
+							notify.showIncorrectCustomerAmountFormatError();
 						}
 					} catch (NotEnoughSeatException e1) {
 						Notify notify = new Notify(AlertType.ERROR);
@@ -144,7 +132,19 @@ public class TableGrid extends GridPane {
 					Button check = new Button("Check");
 					check.setOnMouseClicked(e1 -> {
 						Stage checkStage = new Stage();
-
+						VBox checkWindow = new VBox();
+						Scene checkScene = new Scene(checkWindow);
+						checkWindow.setSpacing(5);
+						checkWindow.setPadding(new Insets(5));
+						checkWindow.setAlignment(Pos.CENTER_LEFT);
+						
+						/*
+						 * 
+						 */
+						
+						checkStage.setTitle("Check");
+						checkStage.setScene(checkScene);
+						checkStage.show();
 					});
 				}
 
@@ -161,11 +161,6 @@ public class TableGrid extends GridPane {
 		});
 		add(tableBtn, table.getPosx(), table.getPosy());
 	}
-
-	/*
-	 * public void seated(Button tableBtn, String tableType) { if (tableType == "")
-	 * { tableBtn.getStyleClass().add("SeatedNormalTable"); } }
-	 */
 
 	public boolean getStatus() {
 		return this.status;
