@@ -2,26 +2,36 @@
     {
         "number": "01A",
         "type": "normal",
-        "maxGuest" : 4
+        "maxGuest" : 4,
+        "xpos": 0,
+        "ypos": 0
     },
     {
         "number": "02A",
         "type": "normal",
-        "maxGuest": 6
+        "maxGuest": 6,
+		"xpos": 1,
+        "ypos": 0
     },
     {
         "number": "03A",
         "type": "normal",
-        "maxGuest": 8
+        "maxGuest": 8,
+        "xpos": 0,
+        "ypos": 1
     },
     {
         "number": "04A",
         "type": "normal",
-        "maxGuest": 2
+        "maxGuest": 2,
+        "xpos": 1,
+        "ypos": 1
     },
     {
         "number": "01B",
         "type": "private",
-        "maxGuest" : 10
+        "maxGuest" : 10,
+        "xpos": 3,
+        "ypos": 4
     }
 ]
