@@ -23,40 +23,36 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-
 public class TableGrid extends GridPane {
-	
+
 	boolean status;
-	
+
 	public TableGrid() {
-		setGrid();
 		/*setHgap(5);
 		setVgap(5);*/
 		setMinSize(300, 350);
 		setBackground(new Background(new BackgroundFill(Color.IVORY, null, null)));
-		
-		
+
 		AddTable(new NormalTable("6", 6), 0, 0);
 		AddTable(new PrivateTable("10", 8), 2, 0);
 
-		/*for (Table table : tables) {
-			///go through tables arraylist and add new tableBtn
-		}*/
-		
+		/*
+		 * for (Table table : tables) { ///go through tables arraylist and add new
+		 * tableBtn }
+		 */
+
 		this.status = false;
 	}
-	
+
 	public void AddTable(Table table, int xPos, int yPos) {
 		Button tableBtn = new Button(table.getTableNumber());
-		
+
 		if (table instanceof NormalTable) {
 			tableBtn.getStyleClass().add(table.getClass().getSimpleName());
 
-			
 		} else if (table instanceof PrivateTable) {
 			tableBtn.getStyleClass().add(table.getClass().getSimpleName());
 
-			
 		} else {
 			tableBtn.getStyleClass().add(table.getClass().getSimpleName());
 
@@ -70,11 +66,11 @@ public class TableGrid extends GridPane {
 				pane.setPadding(new Insets(5));
 				pane.setSpacing(5);
 				Scene scene = new Scene(pane);
-				
+
 				Label label = new Label("Please Input Customer's Amount");
 				TextField text = new TextField();
 				text.setPromptText("customer(s)");
-				
+
 				HBox btns = new HBox();
 				btns.setSpacing(5);
 				btns.setAlignment(Pos.CENTER_RIGHT);
@@ -93,9 +89,9 @@ public class TableGrid extends GridPane {
 							tableBtn.getStyleClass().clear();
 							tableBtn.getStyleClass().add("Seated" + table.getClass().getSimpleName());
 							stage.close();
-							
+
 						}
-					} catch(NumberFormatException e1) {
+					} catch (NumberFormatException e1) {
 						if (text.getText().isEmpty()) {
 							Alert alert = new Alert(AlertType.ERROR);
 							alert.setTitle("Message");
@@ -122,7 +118,7 @@ public class TableGrid extends GridPane {
 					stage.close();
 				});
 				btns.getChildren().addAll(confirm, cancel);
-				
+
 				pane.getChildren().addAll(label, text, btns);
 				stage.setTitle("Seating");
 				stage.setScene(scene);
@@ -135,24 +131,22 @@ public class TableGrid extends GridPane {
 				orderWindow.setPadding(new Insets(5));
 				orderWindow.setSpacing(5);
 				Scene scene = new Scene(orderWindow);
-				
+
 				Label label = new Label("Menu List");
 				orderWindow.getChildren().add(label);
 				orderWindow.getChildren().add(new OrderInput(table, "Dimsum")); /////
 				/*
-				 * for (all menu list) {
-				 *      orderWindow.getChildren().add(new OrderInput(menu's name);
-				 * }
+				 * for (all menu list) { orderWindow.getChildren().add(new OrderInput(menu's
+				 * name); }
 				 */
 				if (table.getBill().getBillableTotal() != 0) {
 					Button check = new Button("Check");
-					check.setOnMouseClicked( e1 -> {
+					check.setOnMouseClicked(e1 -> {
 						Stage checkStage = new Stage();
-						
+
 					});
 				}
-				
-						
+
 				Button close = new Button("Close");
 				close.setOnAction(e1 -> {
 					stage.close();
@@ -162,35 +156,24 @@ public class TableGrid extends GridPane {
 				stage.setScene(scene);
 				stage.show();
 			}
-			
-			
-			
+
 		});
 		add(tableBtn, xPos, yPos);
 	}
-	
-	/*public void seated(Button tableBtn, String tableType) {
-		 if (tableType == "") {
-		  		tableBtn.getStyleClass().add("SeatedNormalTable");
-		 }
-	}*/
-	
+
+	/*
+	 * public void seated(Button tableBtn, String tableType) { if (tableType == "")
+	 * { tableBtn.getStyleClass().add("SeatedNormalTable"); } }
+	 */
+
 	public boolean getStatus() {
 		return this.status;
 	}
-	
+
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
 	
-	public void setGrid() {
-		for (int i = 0; i < 8; i++) {
-			getColumnConstraints().add(new ColumnConstraints(40));
-		}
-		
-		for (int i = 0; i < 9; i++) {
-			getRowConstraints().add(new RowConstraints(40));
-		}
-	}
+	
 
 }
