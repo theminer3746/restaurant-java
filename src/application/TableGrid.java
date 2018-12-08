@@ -4,6 +4,7 @@ import Exception.NotEnoughSeatException;
 import Table.NormalTable;
 import Table.PrivateTable;
 import Table.Table;
+//import logic.RestaurantManagement;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -20,11 +21,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-//import java.util.ArrayList;
-
 
 public class TableGrid extends GridPane {
-	//private ArrayList<Button> TableList;
 	
 	boolean status;
 	
@@ -36,20 +34,12 @@ public class TableGrid extends GridPane {
 		
 		AddTable(new NormalTable("6", 6), 0, 0);
 		AddTable(new PrivateTable("7", 8), 2, 2);
-		
-		//TableList = new ArrayList<Button>();
-		// read text "table" file 
-		/*for (Object e : TableList) {
-			/* int x_pos = e.getXpos();
-			 * int y_pos = e.getYpos();
-			 * if (e.isOccupied()) {
-			 * 	// 
-			 * }
-			 
+
+		/*for (Table table : tables) {
+			///go through tables arraylist and add new tableBtn
 		}*/
 		
 		this.status = false;
-		
 	}
 	
 	public void AddTable(Table table, int xPos, int yPos) {
@@ -116,7 +106,7 @@ public class TableGrid extends GridPane {
 							alert.setContentText("Incorrect Amount Format");
 							alert.show();
 						}
-					} catch (NotEnoughSeatException e1) { ///// ???????
+					} catch (NotEnoughSeatException e1) {
 						Alert alert = new Alert(AlertType.ERROR);
 						alert.setTitle("Error");
 						alert.setHeaderText("Error");
@@ -145,16 +135,26 @@ public class TableGrid extends GridPane {
 				
 				Label label = new Label("Menu List");
 				orderWindow.getChildren().add(label);
-				orderWindow.getChildren().add(new OrderInput("Dimsum"));
+				orderWindow.getChildren().add(new OrderInput(table, "Dimsum")); /////
 				/*
 				 * for (all menu list) {
 				 *      orderWindow.getChildren().add(new OrderInput(menu's name);
 				 * }
 				 */
+				if (table.getBill().getBillableTotal() != 0) {
+					Button check = new Button("Check");
+					check.setOnMouseClicked( e1 -> {
+						Stage checkStage = new Stage();
+						
+					});
+				}
+				
+						
 				Button close = new Button("Close");
 				close.setOnAction(e1 -> {
 					stage.close();
 				});
+				orderWindow.getChildren().add(close);
 				stage.setTitle("Order(s)");
 				stage.setScene(scene);
 				stage.show();
@@ -163,16 +163,14 @@ public class TableGrid extends GridPane {
 			
 			
 		});
-		//TableList.add(tableBtn);
 		add(tableBtn, xPos, yPos);
 	}
 	
-	public void seated(Button tableBtn/*, String tableType*/) {
-		/* if (tableType == "") {
-		 * 		tableBtn.getStyleClass().add("SeatedNormalTable");
-		 * }
-		 * */
-	}
+	/*public void seated(Button tableBtn, String tableType) {
+		 if (tableType == "") {
+		  		tableBtn.getStyleClass().add("SeatedNormalTable");
+		 }
+	}*/
 	
 	public boolean getStatus() {
 		return this.status;
