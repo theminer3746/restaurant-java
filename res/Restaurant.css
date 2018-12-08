@@ -1,4 +1,4 @@
-.normalTable  {
+.NormalTable  {
     -fx-background-color:
         linear-gradient(#f0ff35, #a9ff00),
         radial-gradient(center 50% -40%, radius 200%, #b8ee36 45%, #80c800 50%);
@@ -7,13 +7,16 @@
     -fx-text-fill: black;
 }
 
-.seatedNormalTable  {
-    -fx-background-color: #ff0000;
+.SeatedNormalTable  {
+    -fx-background-color: 
+    	linear-gradient(#ff5400, #be1d00),
+    	radial-gradient(center 50% -40%, radius 200%, #ff5400 45%, #be1d00 50%);
     -fx-pref-width: 30px;
-    -fx-pref-height: 20px;
+    -fx-pref-height: 25px;
+    -fx-background-radius: 5;
     -fx-text-fill: white;
 }
-.privateTable  {
+.PrivateTable  {
     -fx-background-color:
         linear-gradient(#f0ff35, #a9ff00),
         radial-gradient(center 50% -40%, radius 200%, #b8ee36 45%, #80c800 50%);
@@ -22,10 +25,13 @@
     -fx-text-fill: black;
 }
 
-.seatedPrivateTable  {
-    -fx-background-color: #ff0000;
+.SeatedPrivateTable  {
+    -fx-background-color: 
+    	linear-gradient(#ff5400, #be1d00),
+    	radial-gradient(center 50% -40%, radius 200%, #ff5400 45%, #be1d00 50%);
     -fx-pref-width: 30px;
-    -fx-pref-height: 20px;
+    -fx-pref-height: 25px;
+    -fx-background-radius: 5;
     -fx-text-fill: white;
 }
 .Table  {
@@ -37,9 +43,12 @@
     -fx-text-fill: black;
 }
 
-.seatedTable  {
-    -fx-background-color: #ff0000;
+.SeatedTable  {
+    -fx-background-color: 
+    	linear-gradient(#ff5400, #be1d00),
+    	radial-gradient(center 50% -40%, radius 200%, #ff5400 45%, #be1d00 50%);
     -fx-pref-width: 30px;
-    -fx-pref-height: 20px;
+    -fx-pref-height: 25px;
+    -fx-background-radius: 5;
     -fx-text-fill: white;
 }
