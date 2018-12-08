@@ -9,6 +9,8 @@ public abstract class Table implements Billable {
 	protected String tableNumber;
 	protected int guestAmount;
 	protected int maximumGuest;
+	protected int posx;
+	protected int posy;
 
 	public Table(String tableNumber, int maximumGuest) {
 		this.bill = new Bill();
@@ -60,5 +62,21 @@ public abstract class Table implements Billable {
 
 	public void setMaximumGuest(int maximumGuest) {
 		this.maximumGuest = maximumGuest;
+	}
+
+	public int getPosx() {
+		return posx;
+	}
+
+	public void setPosx(int posx) {
+		this.posx = posx;
+	}
+
+	public int getPosy() {
+		return posy;
+	}
+
+	public void setPosy(int posy) {
+		this.posy = posy;
 	}
 }
