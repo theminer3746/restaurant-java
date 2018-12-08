@@ -35,9 +35,6 @@ public class KitchenPane extends VBox {
 		setAlignment(Pos.CENTER_RIGHT);
 		setSpacing(5);
 		
-		/*setBorder(new Border(new BorderStroke(Color.BLUE, BorderStrokeStyle.SOLID, 
-			CornerRadii.EMPTY, BorderWidths.DEFAULT)));*/
-		
 		logListView = new ListView<Label>(logOrderList);
 		logListView.setPrefWidth(250);
 		logListView.setFocusTraversable(false);
@@ -61,13 +58,13 @@ public class KitchenPane extends VBox {
 		
 		getChildren().addAll(logListView,serve);
 		
-		Label newLabel = new Label("1");
+		/*Label newLabel = new Label("1");
 		logOrderList.add(newLabel);
 		logListView.scrollTo(newLabel);
 		
 		Label newLabel2 = new Label("2");
-		logOrderList.add(newLabel);
-		logListView.scrollTo(newLabel);
+		logOrderList.add(newLabel2);
+		logListView.scrollTo(newLabel2);*/
 		
 	}
 	
