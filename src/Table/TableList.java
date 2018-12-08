@@ -38,4 +38,12 @@ public class TableList {
 		//TODO
 		this.tables.add(table);
 	}
+
+	public ArrayList<Table> getTables() {
+		return tables;
+	}
+
+	public void setTables(ArrayList<Table> tables) {
+		this.tables = tables;
+	}
 }
