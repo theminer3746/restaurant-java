@@ -1,16 +1,20 @@
 package logic;
 
+import java.util.UUID;
+
 import Table.Table;
 
 public class Order implements Billable {
 	private Menu menu;
 	private Table table;
 	private String status;
+	private UUID uuid;
 	private int amount;
 
 	public Order(Menu menu, Table table) {
 		this.menu = menu;
 		this.table = table;
+		this.uuid = UUID.randomUUID();
 	}
 
 	@Override
@@ -45,6 +49,10 @@ public class Order implements Billable {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public UUID getUuid() {
+		return uuid;
 	}
 
 	public int getAmount() {
