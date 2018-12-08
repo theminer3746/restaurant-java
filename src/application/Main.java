@@ -48,7 +48,7 @@ public class Main extends Application {
 		scene.getStylesheets().add("Restaurant.css");
 		root.setPadding(new Insets(5));
 		root.setSpacing(5);
-		root.setMinWidth(250);
+		root.setMinWidth(750);
 		root.setMinHeight(400);
 		
 		Tabs tabs = new Tabs(root, tableGrid, kitchen);
