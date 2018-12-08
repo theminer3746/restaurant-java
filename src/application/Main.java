@@ -9,6 +9,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import logic.Restaurant;
 
 public class Main extends Application {
 	
@@ -19,10 +20,14 @@ public class Main extends Application {
 	TableGrid tableGrid;
 	KitchenPane kitchen;
 	
+	Restaurant restaurant;
+	
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		tableGrid = new TableGrid();
+		
+		restaurant = Restaurant.getInstance();
+		tableGrid = new TableGrid(restaurant.getTableList());
 		kitchen = new KitchenPane();
 		
 		primaryStage.initStyle(StageStyle.TRANSPARENT);
