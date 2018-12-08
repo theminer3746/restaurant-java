@@ -113,7 +113,7 @@ public class TableGrid extends GridPane {
 						Alert alert = new Alert(AlertType.ERROR);
 						alert.setTitle("Error");
 						alert.setHeaderText("Error");
-						alert.setContentText("The Amount Of Customers Exceed The Available Seats");
+						alert.setContentText("The Amount Of Customers Exceed The Available Seats (" + e1.getMaxSeat() + ")");
 						alert.show();
 					}
 				});
