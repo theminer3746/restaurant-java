@@ -1,20 +1,39 @@
 package application;
 
+import Exception.NotEnoughSeatException;
+import Table.NormalTable;
+import Table.PrivateTable;
+import Table.Table;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
 //import java.util.ArrayList;
 
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
-import javafx.scene.layout.GridPane;
 
 public class TableGrid extends GridPane {
 	//private ArrayList<Button> TableList;
+	
+	boolean status;
 	
 	public TableGrid() {
 		setHgap(5);
 		setVgap(5);
 		setMinSize(100, 100);
 		
-		AddTable("normal");
+		/*Table table = new NormalTable("6", 6);
+		Table table2 = new PrivateTable("7", 8);*/
+		AddTable(new NormalTable("6", 6), 0, 0);
+		AddTable(new PrivateTable("7", 8), 2, 2);
 		
 		//TableList = new ArrayList<Button>();
 		// read text "table" file 
@@ -27,40 +46,117 @@ public class TableGrid extends GridPane {
 			 
 		}*/
 		
-		setVisible(false);
-		
+		this.status = false;
 		
 	}
 	
-	public void AddTable(String tableType/* Table table*/) {
-		Button tableBtn = new Button();
+	public void AddTable(Table table, int xPos, int yPos) {
+		Button tableBtn = new Button(table.getTableNumber());
 		
-		if (tableType == "normal" /*table.getName() == "normal*/ ) {
-			tableBtn.getStyleClass().add("normalTable");
+		if (table instanceof NormalTable) {
+			tableBtn.getStyleClass().add(table.getClass().getSimpleName());
+
 			
-		} else if (tableType == "private") {
-			tableBtn.getStyleClass().add("privateTable");
+		} else if (table instanceof PrivateTable) {
+			tableBtn.getStyleClass().add(table.getClass().getSimpleName());
+
 			
 		} else {
-			tableBtn.getStyleClass().add("Table");
+			tableBtn.getStyleClass().add(table.getClass().getSimpleName());
+
 			
 		}
-		/*tableBtn.setOnAction(e -> {
-			Stage stage = new Stage();
+		tableBtn.setOnAction(e -> {
+			//int maxGuest = table.getMaximumGuest();
+			if (table.getGuestAmount() <= 0) {
+				Stage stage = new Stage();
+				VBox pane = new VBox();
+				pane.setMinWidth(250);
+				pane.setAlignment(Pos.TOP_CENTER);
+				pane.setPadding(new Insets(5));
+				pane.setSpacing(5);
+				Scene scene = new Scene(pane);
+				
+				Label label = new Label("Please Input Customer's Amount");
+				TextField text = new TextField();
+				text.setPromptText("customer(s)");
+				
+				HBox btns = new HBox();
+				btns.setSpacing(5);
+				btns.setAlignment(Pos.CENTER_RIGHT);
+				Button confirm = new Button("Confirm");
+				confirm.setOnAction(i -> {
+					try {
+						int amount = Integer.parseInt(text.getText());
+						if (amount <= 0) {
+							Alert alert = new Alert(AlertType.ERROR);
+							alert.setTitle("Error");
+							alert.setHeaderText("Error");
+							alert.setContentText("The Amount Of Customers Must be Positive");
+							alert.show();
+						} else {
+							table.setGuestAmount(amount);
+							tableBtn.getStyleClass().clear();
+							tableBtn.getStyleClass().add("Seated" + table.getClass().getSimpleName());
+							stage.close();
+							
+						}
+					} catch(NumberFormatException e1) {
+						if (text.getText().isEmpty()) {
+							Alert alert = new Alert(AlertType.ERROR);
+							alert.setTitle("Message");
+							alert.setHeaderText("Message");
+							alert.setContentText("Please Fill In Customer Amount");
+							alert.show();
+						} else {
+							Alert alert = new Alert(AlertType.ERROR);
+							alert.setTitle("Error");
+							alert.setHeaderText("Error");
+							alert.setContentText("Incorrect Amount Format");
+							alert.show();
+						}
+					} catch (NotEnoughSeatException e1) { ///// ???????
+						Alert alert = new Alert(AlertType.ERROR);
+						alert.setTitle("Error");
+						alert.setHeaderText("Error");
+						alert.setContentText("The Amount Of Customers Exceed The Available Seats");
+						alert.show();
+					}
+				});
+				Button cancel = new Button("Cancel");
+				cancel.setOnAction(i -> {
+					stage.close();
+				});
+				btns.getChildren().addAll(confirm, cancel);
+				
+				pane.getChildren().addAll(label, text, btns);
+				stage.setTitle("Seating");
+				stage.setScene(scene);
+				stage.show();
+			} else {
+				////
+			}
 			
-		});*/
+			
+			
+		});
 		//TableList.add(tableBtn);
-		add(tableBtn, 0, 0);
+		add(tableBtn, xPos, yPos);
 	}
 	
-	public void seated(Button table) {
-		table.setStyle(
-				"-fx-background-color: red");
+	public void seated(Button tableBtn/*, String tableType*/) {
+		/* if (tableType == "") {
+		 * 		tableBtn.getStyleClass().add("SeatedNormalTable");
+		 * }
+		 * */
 	}
 	
-	public void setBackGround(GraphicsContext gc) {
-		gc.setFill(javafx.scene.paint.Color.BLUE);
-		gc.fillRect(0, 0, 250, 400);
+	public boolean getStatus() {
+		return this.status;
+	}
+	
+	public void setStatus(boolean status) {
+		this.status = status;
 	}
 
 }
