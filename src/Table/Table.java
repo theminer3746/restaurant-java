@@ -50,7 +50,7 @@ public abstract class Table implements Billable {
 
 	public void setGuestAmount(int guestAmount) throws NotEnoughSeatException {
 		if (guestAmount > maximumGuest) {
-			throw new NotEnoughSeatException();
+			throw new NotEnoughSeatException(maximumGuest);
 		}
 
 		this.guestAmount = guestAmount;
