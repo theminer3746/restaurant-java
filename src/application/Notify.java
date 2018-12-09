@@ -12,9 +12,10 @@ public class Notify {
 	public Notify(Alert.AlertType alertType) {
 		alert = new Alert(AlertType.ERROR);
 	}
-
+	
+	///// Customer ERROR
 	public void showNegativeCustomerAmountError() {
-		this.setTitle("Error").setHeaderText("Error").setContentText("The Amount Of Customers Must be Positive").show();
+		this.setTitle("Error").setHeaderText("Error").setContentText("The Amount Of Customers Must Be Positive").show();
 	}
 
 	public void showEmptyCustomerTextFieldError() {
@@ -29,9 +30,10 @@ public class Notify {
 		this.setTitle("Error").setHeaderText("Error")
 				.setContentText("The Amount Of Customers Exceed The Available Seats (" + maximumSeat + ")").show();
 	}
-
+	
+	///// Order ERROR
 	public void showNegativeQuantityError() {
-		this.setTitle("Error").setHeaderText("Error").setContentText("The Quantity Must be Positive").show();
+		this.setTitle("Error").setHeaderText("Error").setContentText("The Quantity Must Be Positive").show();
 	}
 
 	public void showEmptyQuantityTextFieldError() {
@@ -40,6 +42,27 @@ public class Notify {
 
 	public void showIncorrectQuantityFormatError() {
 		this.setTitle("Error").setHeaderText("Error").setContentText("Incorrect Quantity Format").show();
+	}
+	
+	///// Kitchen Pane ERROR
+	public void showEmptyOrderError() {
+		this.setTitle("Error").setHeaderText("Error").setContentText("There Is No Order").show();
+	}
+	
+	public void showNegativeServePosError() {
+		this.setTitle("Error").setHeaderText("Error").setContentText("The Order's Number Must Be Positive").show();
+	}
+	
+	public void showExceedServePosError() {
+		this.setTitle("Error").setHeaderText("Error").setContentText("The Order's Number Must Be In Orders' Range").show();
+	}
+
+	public void showEmptyServePosTextFieldError() {
+		this.setTitle("Message").setHeaderText("Message").setContentText("Please Fill In Order's Number").show();
+	}
+
+	public void showIncorrectServePosFormatError() {
+		this.setTitle("Error").setHeaderText("Error").setContentText("Incorrect Order's Number Format").show();
 	}
 
 	public Notify setTitle(String title) {
