@@ -23,15 +23,21 @@ public class TableList {
 	}
 	
 	private void populateTableData() {
+		tables.add(new NormalTable("01A", 4, 0, 0));
+		tables.add(new NormalTable("02A", 6, 1, 0));
+		tables.add(new NormalTable("03A", 8, 0, 1));
+		tables.add(new NormalTable("04A", 2, 1, 1));
+		tables.add(new PrivateTable("01B", 10, 3, 4));
+		
 		//JSONArray arr = new JSONArray();
 		
-		try {
+		/*try {
 			String uri = ClassLoader.getSystemResource("tables.json").toString();
 			FileReader fileReader = new FileReader(uri);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 	}
 	
 	public void addTableToList(Table table) {
