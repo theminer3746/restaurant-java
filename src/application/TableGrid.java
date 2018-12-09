@@ -18,8 +18,9 @@ public class TableGrid extends GridPane {
 	boolean status;
 
 	public TableGrid(Restaurant restaurant, KitchenPane kitchenPane) {
+		getStylesheets().add("Restaurant.css");
+		getStyleClass().add("Restaurant.css");
 		setGrid();
-
 		setMinSize(300, 350);
 		setBackground(new Background(new BackgroundFill(Color.IVORY, null, null)));
 
@@ -41,7 +42,7 @@ public class TableGrid extends GridPane {
 			if (table.getGuestAmount() <= 0) {
 				new SeatingWindow(table, tableBtn);
 			} else {
-				new OrderWindow(table, tableBtn, restaurant, kitchenPane, logServeList);
+				new OrderWindow(table, tableBtn, restaurant, kitchenPane, logServeList, this);
 			}
 
 		});

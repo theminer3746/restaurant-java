@@ -16,7 +16,7 @@ import logic.Order;
 import logic.Restaurant;
 
 public class OrderWindow extends Stage {
-	public OrderWindow(Table table, Button tableBtn, Restaurant restaurant, KitchenPane kitchenPane, ObservableList<Label> logServeList/**/) {
+	public OrderWindow(Table table, Button tableBtn, Restaurant restaurant, KitchenPane kitchenPane, ObservableList<Label> logServeList, TableGrid tableGrid) {
 		VBox orderWindow = new VBox();
 		orderWindow.setMinWidth(250);
 		orderWindow.setAlignment(Pos.TOP_CENTER);
@@ -49,7 +49,7 @@ public class OrderWindow extends Stage {
 					alert.setContentText("Some of this table's order(s) is still being prepared in the kitchen");
 					alert.show();
 				} else {
-					new CheckWindow(table, tableBtn, this, logServeList);
+					new CheckWindow(table, tableBtn, this, logServeList, tableGrid, kitchenPane, restaurant);
 				}
 				
 			});

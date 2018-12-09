@@ -22,7 +22,7 @@ public class Main extends Application {
 	KitchenPane kitchenPane;
 
 	Restaurant restaurant;
-
+	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 
@@ -51,7 +51,7 @@ public class Main extends Application {
 		});
 
 		Scene scene = new Scene(root);
-		scene.getStylesheets().add("Restaurant.css");
+		//scene.getStylesheets().add("Restaurant.css");
 		root.setPadding(new Insets(5));
 		root.setSpacing(5);
 		root.setMinWidth(750);
