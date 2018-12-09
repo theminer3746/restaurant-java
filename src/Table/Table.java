@@ -3,10 +3,14 @@ package Table;
 import java.text.NumberFormat;
 
 import Exception.NotEnoughSeatException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.Label;
 import logic.Bill;
 import logic.Billable;
 
 public abstract class Table implements Billable {
+	private ObservableList<Label> ServedOrderList;
 	protected Bill bill;
 	protected String tableNumber;
 	protected int guestAmount;
@@ -23,6 +27,7 @@ public abstract class Table implements Billable {
 		this.posy = posy;
 		this.numberFormat = NumberFormat.getInstance();
 		numberFormat.setMaximumFractionDigits(2);
+		this.ServedOrderList = FXCollections.observableArrayList();
 	}
 
 	public Table() {
@@ -109,5 +114,13 @@ public abstract class Table implements Billable {
 
 	public void setPosy(int posy) {
 		this.posy = posy;
+	}
+	
+	public ObservableList<Label> getServedOrderList() {
+		return this.ServedOrderList;
+	}
+	
+	public void addServedOrder(Label lebel) {
+		this.ServedOrderList.add(lebel);
 	}
 }
