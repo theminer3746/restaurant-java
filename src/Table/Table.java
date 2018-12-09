@@ -1,5 +1,7 @@
 package Table;
 
+import java.text.NumberFormat;
+
 import Exception.NotEnoughSeatException;
 import logic.Bill;
 import logic.Billable;
@@ -11,6 +13,7 @@ public abstract class Table implements Billable {
 	protected int maximumGuest;
 	protected int posx;
 	protected int posy;
+	private NumberFormat numberFormat;
 
 	public Table(String tableNumber, int maximumGuest, int posx, int posy) {
 		this.bill = new Bill();
@@ -18,8 +21,10 @@ public abstract class Table implements Billable {
 		this.maximumGuest = maximumGuest;
 		this.posx = posx;
 		this.posy = posy;
+		this.numberFormat = NumberFormat.getInstance();
+		numberFormat.setMaximumFractionDigits(2);
 	}
-	
+
 	public Table() {
 		this.bill = new Bill();
 	}
@@ -28,10 +33,26 @@ public abstract class Table implements Billable {
 
 	public abstract double getPrice();
 
+	public String getFormattedPrice() {
+		return numberFormat.format(getPrice());
+	}
+
 	public abstract double calculateServiceCharge(double bill);
 
 	public double getTotal() {
 		return bill.getBillableTotal() + getPrice();
+	}
+
+	public String getFormattedTotal() {
+		return numberFormat.format(getTotal());
+	}
+
+	public double getBillableTotal() {
+		return bill.getBillableTotal();
+	}
+
+	public String getFormattedBillableTotal() {
+		return numberFormat.format(getBillableTotal());
 	}
 
 	public Bill getBill() {

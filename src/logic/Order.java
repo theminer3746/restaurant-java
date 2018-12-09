@@ -1,5 +1,6 @@
 package logic;
 
+import java.text.NumberFormat;
 import java.util.UUID;
 
 import Table.Table;
@@ -10,16 +11,23 @@ public class Order implements Billable {
 	private String status;
 	private UUID uuid;
 	private int amount;
+	private NumberFormat numberFormat;
 
 	public Order(Menu menu, Table table) {
 		this.menu = menu;
 		this.table = table;
 		this.uuid = UUID.randomUUID();
+		this.numberFormat = NumberFormat.getInstance();
+		numberFormat.setMaximumFractionDigits(2);
 	}
 
 	@Override
 	public double getPrice() {
 		return amount * menu.getPrice();
+	}
+
+	public String getFormattedPrice() {
+		return numberFormat.format(amount * menu.getPrice());
 	}
 
 	@Override
