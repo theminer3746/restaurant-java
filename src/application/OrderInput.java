@@ -1,6 +1,7 @@
 package application;
 
 import Table.Table;
+import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -14,7 +15,7 @@ import logic.OrderList;
 
 public class OrderInput extends HBox {
 
-	public OrderInput(Table table, Menu menu, OrderList orderList, KitchenPane kitchenPane) {
+	public OrderInput(Table table, Menu menu, OrderList orderList, KitchenPane kitchenPane, ObservableList<Label> logServeList) {
 		setAlignment(Pos.CENTER_RIGHT);
 		setSpacing(5);
 		Label orderName = new Label(menu.getName());
@@ -33,7 +34,9 @@ public class OrderInput extends HBox {
 					order.setAmount(amount);
 					orderList.addToOrders(order);
 					kitchenPane.order(new Label("Table's Number : " + table.getTableNumber() + ", " + menu.getName() + amount));
-					/// place order
+					
+					logServeList.add(new Label("Table's Number : " + table.getTableNumber() + ", " + menu.getName() + amount));
+					
 					quantity.setText("");
 
 				}
