@@ -40,9 +40,9 @@ public class CheckWindow extends Stage {
 		logListView.setBorder(new Border(new BorderStroke(Color.BLUE, BorderStrokeStyle.SOLID, 
 				CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 		
-		Label serviceCharge = new Label("Service Charge : " + table.calculateServiceCharge(table.getBillableTotal()));
+		Label serviceCharge = new Label("Service Charge : " + table.getFormattedServiceCharge(table.getBillableTotal()));
 		
-		Label total = new Label("Total : " + table.getTotal());
+		Label total = new Label("Total : " + table.getFormattedTotal());
 		
 		Button confirm = new Button("Confirm");
 		confirm.setOnMouseClicked(e2 -> {
