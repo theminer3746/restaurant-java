@@ -22,7 +22,7 @@ public class Main extends Application {
 	KitchenPane kitchenPane;
 
 	Restaurant restaurant;
-	
+
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 
@@ -30,7 +30,7 @@ public class Main extends Application {
 
 		kitchenPane = new KitchenPane(restaurant);
 		tableGrid = new TableGrid(restaurant, kitchenPane);
-		
+
 		primaryStage.initStyle(StageStyle.TRANSPARENT);
 
 		VBox root = new VBox();
@@ -51,7 +51,6 @@ public class Main extends Application {
 		});
 
 		Scene scene = new Scene(root);
-		//scene.getStylesheets().add("Restaurant.css");
 		root.setPadding(new Insets(5));
 		root.setSpacing(5);
 		root.setMinWidth(750);
@@ -62,7 +61,7 @@ public class Main extends Application {
 
 		primaryStage.setTitle("Restaurant");
 		primaryStage.setScene(scene);
-		primaryStage.getIcons().add(new Image("test.png"));
+		primaryStage.getIcons().add(new Image("logo.png"));
 		primaryStage.show();
 	}
 
