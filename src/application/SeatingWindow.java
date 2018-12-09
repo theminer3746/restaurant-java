@@ -13,7 +13,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class SeatingWindow extends Stage{
+public class SeatingWindow extends Stage {
 	public SeatingWindow(Table table, Button tableBtn) {
 		VBox pane = new VBox();
 		pane.setMinWidth(250);

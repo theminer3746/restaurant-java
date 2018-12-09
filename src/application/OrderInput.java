@@ -14,7 +14,8 @@ import logic.OrderList;
 
 public class OrderInput extends HBox {
 
-	public OrderInput(Table table, Menu menu, OrderList orderList, KitchenPane kitchenPane, ObservableList<Label> logServeList) {
+	public OrderInput(Table table, Menu menu, OrderList orderList, KitchenPane kitchenPane,
+			ObservableList<Label> logServeList) {
 		setAlignment(Pos.CENTER_RIGHT);
 		setSpacing(5);
 		Label orderName = new Label(menu.getName());
@@ -32,10 +33,12 @@ public class OrderInput extends HBox {
 					Order order = new Order(menu, table);
 					order.setAmount(amount);
 					orderList.addToOrders(order);
-					kitchenPane.order(new Label("Table's Number : " + table.getTableNumber() + ", " + menu.getName() + " " + amount));
-					
-					logServeList.add(new Label("Table's Number : " + table.getTableNumber() + ", " + menu.getName() + " " + amount));
-					
+					kitchenPane.order(new Label(
+							"Table's Number : " + table.getTableNumber() + ", " + menu.getName() + " " + amount));
+
+					logServeList.add(new Label(
+							"Table's Number : " + table.getTableNumber() + ", " + menu.getName() + " " + amount));
+
 					quantity.setText("");
 
 				}

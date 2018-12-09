@@ -24,20 +24,19 @@ public class TableGrid extends GridPane {
 		setMinSize(300, 350);
 		setBackground(new Background(new BackgroundFill(Color.IVORY, null, null)));
 
-		for (Table table : restaurant.getTableList().getTables()) { 
-			AddTable(table, restaurant,kitchenPane); 
+		for (Table table : restaurant.getTableList().getTables()) {
+			AddTable(table, restaurant, kitchenPane);
 		}
-		
 
 		this.status = false;
 	}
 
-	public void AddTable(Table table, Restaurant restaurant,KitchenPane kitchenPane) {
+	public void AddTable(Table table, Restaurant restaurant, KitchenPane kitchenPane) {
 		Button tableBtn = new Button(table.getTableNumber());
 		tableBtn.getStyleClass().add(table.getClass().getSimpleName());
-		
+
 		ObservableList<Label> logServeList = FXCollections.observableArrayList();
-		
+
 		tableBtn.setOnAction(e -> {
 			if (table.getGuestAmount() <= 0) {
 				new SeatingWindow(table, tableBtn);

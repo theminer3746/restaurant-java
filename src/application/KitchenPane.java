@@ -23,21 +23,21 @@ import logic.Restaurant;
 public class KitchenPane extends VBox {
 	private ObservableList<Label> logOrderList = FXCollections.observableArrayList();
 	private ListView<Label> logListView;
-	
+
 	private boolean status;
-	
+
 	public KitchenPane(Restaurant restaurant) {
 		setAlignment(Pos.CENTER_RIGHT);
 		setSpacing(5);
-		
+
 		logListView = new ListView<Label>(logOrderList);
 		logListView.setPrefWidth(250);
 		logListView.setFocusTraversable(false);
 		logListView.setBackground(new Background(new BackgroundFill(Color.IVORY, null, null)));
 		logListView.setPlaceholder(new Label("No Orders"));
-		logListView.setBorder(new Border(new BorderStroke(Color.BLUE, BorderStrokeStyle.SOLID, 
-				CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-		
+		logListView.setBorder(new Border(
+				new BorderStroke(Color.BLUE, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+
 		HBox serveTab = new HBox();
 		serveTab.setSpacing(5);
 		serveTab.setAlignment(Pos.CENTER_RIGHT);
@@ -45,14 +45,14 @@ public class KitchenPane extends VBox {
 		TextField servePos = new TextField();
 		servePos.setPromptText("Serve Order Number");
 		serveBtn.setOnMouseClicked(e -> {
-			
+
 			if (!logOrderList.isEmpty()) {
 				try {
 					int pos = Integer.parseInt(servePos.getText());
 					if (pos <= 0) {
 						Notify notify = new Notify(AlertType.ERROR);
 						notify.showNegativeServePosError();
-						
+
 					} else if (pos > logOrderList.size()) {
 						Notify notify = new Notify(AlertType.ERROR);
 						notify.showExceedServePosError();
@@ -76,30 +76,24 @@ public class KitchenPane extends VBox {
 			}
 		});
 		serveTab.getChildren().addAll(servePos, serveBtn);
-		
+
 		getChildren().addAll(logListView, serveTab);
-		
-		/*Label newLabel = new Label("1");
-		logOrderList.add(newLabel);
-		
-		Label newLabel2 = new Label("2");
-		logOrderList.add(newLabel2);*/
-		
+
 		this.status = false;
 	}
-	
+
 	public boolean getStatus() {
 		return this.status;
 	}
-	
+
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
-	
+
 	public void order(Label label) {
 		getLog().add(label);
 	}
-	
+
 	public ObservableList<Label> getLog() {
 		return this.logOrderList;
 	}

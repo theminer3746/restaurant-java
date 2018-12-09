@@ -48,5 +48,6 @@ public class Tabs extends HBox {
 
 		getChildren().addAll(counterBtn, kitchenBtn, closeBtn);
 	}
-
+	
+	
 }

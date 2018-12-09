@@ -16,7 +16,8 @@ import logic.Order;
 import logic.Restaurant;
 
 public class OrderWindow extends Stage {
-	public OrderWindow(Table table, Button tableBtn, Restaurant restaurant, KitchenPane kitchenPane, ObservableList<Label> logServeList, TableGrid tableGrid) {
+	public OrderWindow(Table table, Button tableBtn, Restaurant restaurant, KitchenPane kitchenPane,
+			ObservableList<Label> logServeList, TableGrid tableGrid) {
 		VBox orderWindow = new VBox();
 		orderWindow.setMinWidth(250);
 		orderWindow.setAlignment(Pos.TOP_CENTER);
@@ -28,8 +29,8 @@ public class OrderWindow extends Stage {
 		orderWindow.getChildren().add(label);
 
 		for (Menu menu : restaurant.getMenuList().getMenus()) {
-			orderWindow.getChildren()
-					.add(new OrderInput(table, menu, restaurant.getKitchen().getOrderList(), kitchenPane, logServeList /**/));
+			orderWindow.getChildren().add(
+					new OrderInput(table, menu, restaurant.getKitchen().getOrderList(), kitchenPane, logServeList));
 		}
 
 		if (table.getBill().getBillableTotal() != 0) {
@@ -51,7 +52,7 @@ public class OrderWindow extends Stage {
 				} else {
 					new CheckWindow(table, tableBtn, this, logServeList, tableGrid, kitchenPane, restaurant);
 				}
-				
+
 			});
 			orderWindow.getChildren().add(checkBtn);
 		}
