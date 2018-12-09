@@ -50,7 +50,7 @@ public class OrderWindow extends Stage {
 					alert.setContentText("Some of this table's order(s) is still being prepared in the kitchen");
 					alert.show();
 				} else {
-					new CheckWindow(table, tableBtn, this, logServeList, tableGrid, kitchenPane, restaurant);
+					new CheckWindow(table, tableBtn, this, tableGrid, kitchenPane, restaurant);
 				}
 
 			});
