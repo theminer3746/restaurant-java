@@ -2,7 +2,6 @@ package application;
 
 import Exception.NotEnoughSeatException;
 import Table.Table;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -24,7 +23,6 @@ import logic.Bill;
 
 public class CheckWindow extends Stage {
 	
-	//private ObservableList<Label> logOrdersList = FXCollections.observableArrayList();
 	private ListView<Label> logListView;
 	
 	public CheckWindow(Table table, Button tableBtn, Stage stage, ObservableList<Label> logServeList) {
@@ -41,10 +39,6 @@ public class CheckWindow extends Stage {
 		logListView.setPlaceholder(new Label("No Orders"));
 		logListView.setBorder(new Border(new BorderStroke(Color.BLUE, BorderStrokeStyle.SOLID, 
 				CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-		
-		/*
-		 * 
-		 */
 		
 		Label serviceCharge = new Label("Service Charge : " + table.calculateServiceCharge(table.getTotal()));
 		

@@ -8,7 +8,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import logic.Menu;
 import logic.Order;
 import logic.OrderList;
@@ -33,9 +32,9 @@ public class OrderInput extends HBox {
 					Order order = new Order(menu, table);
 					order.setAmount(amount);
 					orderList.addToOrders(order);
-					kitchenPane.order(new Label("Table's Number : " + table.getTableNumber() + ", " + menu.getName() + amount));
+					kitchenPane.order(new Label("Table's Number : " + table.getTableNumber() + ", " + menu.getName() + " " + amount));
 					
-					logServeList.add(new Label("Table's Number : " + table.getTableNumber() + ", " + menu.getName() + amount));
+					logServeList.add(new Label("Table's Number : " + table.getTableNumber() + ", " + menu.getName() + " " + amount));
 					
 					quantity.setText("");
 
