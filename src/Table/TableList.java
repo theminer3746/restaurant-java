@@ -11,6 +11,7 @@ public class TableList {
 	private ArrayList<Table> tables;
 	
 	private TableList() {
+		tables = new ArrayList<Table>();
 		populateTableData();
 	}
 	
