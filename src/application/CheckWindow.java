@@ -1,5 +1,7 @@
 package application;
 
+import java.text.NumberFormat;
+
 import Exception.NotEnoughSeatException;
 import Table.Table;
 import javafx.geometry.Insets;
@@ -80,7 +82,7 @@ public class CheckWindow extends Stage {
 						confirmationBox.setPadding(new Insets(5));
 						Scene confirmScene = new Scene(confirmationBox);
 						confirmationBox.setAlignment(Pos.CENTER);
-						Label change = new Label("Change is " + (amount - Double.parseDouble(table.getFormattedTotal())));
+						Label change = new Label("Change is " + NumberFormat.getInstance().format((amount - Double.parseDouble(table.getFormattedTotal()))));
 						Button close = new Button("Close");
 						close.setOnMouseClicked(e4 -> {
 							try {
