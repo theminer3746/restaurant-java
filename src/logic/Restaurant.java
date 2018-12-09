@@ -28,6 +28,10 @@ public class Restaurant {
 		tableList.getTables().get(indexOfTableToServe).getBill().addToBill(toServe);
 	}
 	
+	public void cancel(int n) {
+		kitchen.getOrderList().getOrders().remove(n);
+	}
+	
 	public TableList getTableList() {
 		return tableList;
 	}
