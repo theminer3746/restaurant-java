@@ -2,10 +2,10 @@
     -fx-background-color:
         linear-gradient(#f0ff35, #a9ff00),
         radial-gradient(center 50% -40%, radius 200%, #b8ee36 45%, #80c800 50%);
-    -fx-pref-width: 40px;
-    -fx-pref-height: 35px;
+    -fx-pref-width: 1.2cm;
+    -fx-pref-height: 0.8cm;
     -fx-background-radius: 5;
-    -fx-text-fill: black;
+    -fx-text-fill: #000000;
     -fx-alignment: CENTER;
 }
 
@@ -13,20 +13,20 @@
     -fx-background-color: 
     	linear-gradient(#ff5400, #be1d00),
     	radial-gradient(center 50% -40%, radius 200%, #ff5400 45%, #be1d00 50%);
-    -fx-pref-width: 40px;
-    -fx-pref-height: 35px;
+    -fx-pref-width: 1.2cm;
+    -fx-pref-height: 0.8cm;
     -fx-background-radius: 5;
-    -fx-text-fill: white;
+    -fx-text-fill: #ffffff;
     -fx-alignment: CENTER;
 }
 .PrivateTable  {
     -fx-background-color:
         linear-gradient(#f0ff35, #a9ff00),
         radial-gradient(center 50% -40%, radius 200%, #b8ee36 45%, #80c800 50%);
-    -fx-pref-width: 50px;
-    -fx-pref-height: 35px;
+    -fx-pref-width: 1.4cm;
+    -fx-pref-height: 0.9cm;
     -fx-background-radius: 5;
-    -fx-text-fill: black;
+    -fx-text-fill: #000000;
     -fx-alignment: CENTER;
 }
 
@@ -34,9 +34,9 @@
     -fx-background-color: 
     	linear-gradient(#ff5400, #be1d00),
     	radial-gradient(center 50% -40%, radius 200%, #ff5400 45%, #be1d00 50%);
-    -fx-pref-width: 50px;
-    -fx-pref-height: 35px;
+    -fx-pref-width: 1.4cm;
+    -fx-pref-height: 0.9cm;
     -fx-background-radius: 5;
-    -fx-text-fill: white;
+    -fx-text-fill: #ffffff;
     -fx-alignment: CENTER;
 }
