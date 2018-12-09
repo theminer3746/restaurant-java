@@ -5,9 +5,11 @@ import Table.TableList;
 public class Restaurant {
 	private static Restaurant instance;
 	private TableList tableList;
+	private MenuList menuList;
 	
 	private Restaurant() {
 		tableList = TableList.getInstance();
+		menuList = MenuList.getInstance();
 	}
 	
 	public static Restaurant getInstance() {
@@ -24,5 +26,13 @@ public class Restaurant {
 
 	public void setTableList(TableList tableList) {
 		this.tableList = tableList;
+	}
+
+	public MenuList getMenuList() {
+		return menuList;
+	}
+
+	public void setMenuList(MenuList menuList) {
+		this.menuList = menuList;
 	}
 }
