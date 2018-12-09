@@ -22,6 +22,12 @@ public class Restaurant {
 		return instance;
 	}
 
+	public void serve(int n) {
+		Order toServe = kitchen.getOrderList().getOrders().remove(n);
+		int indexOfTableToServe = tableList.getTables().indexOf(toServe.getTable());
+		tableList.getTables().get(indexOfTableToServe).getBill().addToBill(toServe);
+	}
+	
 	public TableList getTableList() {
 		return tableList;
 	}
