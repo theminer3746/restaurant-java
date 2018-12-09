@@ -58,7 +58,7 @@ public class KitchenPane extends VBox {
 						notify.showExceedServePosError();
 					} else {
 						logOrderList.remove(pos - 1);
-						restaurant.serve(pos);
+						restaurant.serve(pos - 1);
 					}
 				} catch (NumberFormatException e1) {
 					if (servePos.getText().isEmpty()) {
