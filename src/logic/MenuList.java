@@ -20,9 +20,16 @@ public class MenuList {
 	}
 
 	private void populateMenuList() {
+		menus.add(new Menu("Stuffed mushroom", 185));
 		menus.add(new Menu("Carbonara spaghetti", 150));
+		menus.add(new Menu("Seafood Trio spaghetti", 180));
 		menus.add(new Menu("Hawaiian pizza", 200));
+		menus.add(new Menu("Supreme pizza", 200));
+		menus.add(new Menu("Lobster ravioli", 195));
+		menus.add(new Menu("Mac N'Cheese", 145));
 		menus.add(new Menu("Meatball", 175));
+		menus.add(new Menu("Caesar Salad", 80));
+		menus.add(new Menu("Greek Salad", 80));
 	}
 
 	public void addMenu(Menu menu) {
