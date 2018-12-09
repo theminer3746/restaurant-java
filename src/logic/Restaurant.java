@@ -1,5 +1,7 @@
 package logic;
 
+import java.text.NumberFormat;
+
 import Table.Table;
 import Table.TableList;
 
@@ -8,11 +10,14 @@ public class Restaurant {
 	private TableList tableList;
 	private MenuList menuList;
 	private Kitchen kitchen;
+	private NumberFormat numberFormat;
 	
 	private Restaurant() {
 		tableList = TableList.getInstance();
 		menuList = MenuList.getInstance();
 		kitchen = Kitchen.getInstance();
+		numberFormat = NumberFormat.getInstance();
+		numberFormat.setMaximumFractionDigits(2);
 	}
 	
 	public static Restaurant getInstance() {
