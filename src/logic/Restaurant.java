@@ -1,5 +1,6 @@
 package logic;
 
+import Table.Table;
 import Table.TableList;
 
 public class Restaurant {
@@ -22,10 +23,11 @@ public class Restaurant {
 		return instance;
 	}
 
-	public void serve(int n) {
+	public Table serve(int n) {
 		Order toServe = kitchen.getOrderList().getOrders().remove(n);
 		int indexOfTableToServe = tableList.getTables().indexOf(toServe.getTable());
 		tableList.getTables().get(indexOfTableToServe).getBill().addToBill(toServe);
+		return tableList.getTables().get(indexOfTableToServe);
 	}
 	
 	public void cancel(int n) {
