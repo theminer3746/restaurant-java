@@ -12,10 +12,16 @@ public abstract class Table implements Billable {
 	protected int posx;
 	protected int posy;
 
-	public Table(String tableNumber, int maximumGuest) {
+	public Table(String tableNumber, int maximumGuest, int posx, int posy) {
 		this.bill = new Bill();
 		this.tableNumber = tableNumber;
 		this.maximumGuest = maximumGuest;
+		this.posx = posx;
+		this.posy = posy;
+	}
+	
+	public Table() {
+		this.bill = new Bill();
 	}
 
 	public abstract String getName();

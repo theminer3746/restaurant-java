@@ -3,8 +3,12 @@ package Table;
 public class PrivateTable extends Table {
 	private final double SERVICE_CHARGE_RATE = 0.07;
 
-	public PrivateTable(String tableNumber, int maximumGuest) {
-		super(tableNumber, maximumGuest);
+	public PrivateTable(String tableNumber, int maximumGuest, int posx, int posy) {
+		super(tableNumber, maximumGuest, posx, posy);
+	}
+	
+	public PrivateTable() {
+		super();
 	}
 
 	@Override
