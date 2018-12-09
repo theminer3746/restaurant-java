@@ -8,6 +8,7 @@ public class MenuList {
 	
 	public MenuList() {
 		menus = new ArrayList<Menu>();
+		populateMenuList();
 	}
 
 	public static MenuList getInstance() {
@@ -16,6 +17,12 @@ public class MenuList {
 		}
 		
 		return instance;
+	}
+	
+	private void populateMenuList() {
+		menus.add(new Menu("Carbonara spaghetti", 150));
+		menus.add(new Menu("Hawaiian pizza", 200));
+		menus.add(new Menu("Meatball", 175));
 	}
 	
 	public void addMenu(Menu menu) {
