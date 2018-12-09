@@ -21,6 +21,7 @@ import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import logic.Bill;
 
 public class TableGrid extends GridPane {
 
@@ -127,7 +128,7 @@ public class TableGrid extends GridPane {
 				 * for (all menu list) { orderWindow.getChildren().add(new OrderInput(menu's
 				 * name); }
 				 */
-				if (table.getBill().getBillableTotal() != 0) {
+				if (table.getBill().getBillableTotal() == 0) {
 					Button check = new Button("Check");
 					check.setOnMouseClicked(e1 -> {
 						Stage checkStage = new Stage();
@@ -140,11 +141,31 @@ public class TableGrid extends GridPane {
 						/*
 						 * 
 						 */
+						Button confirm = new Button("Confirm");
+						confirm.setOnMouseClicked(e2 -> {
+							try {
+								table.setBill(new Bill());
+								table.setGuestAmount(0);
+								tableBtn.getStyleClass().clear();
+								tableBtn.getStyleClass().add(table.getClass().getSimpleName());
+								checkStage.close();
+								stage.close();
+							} catch (NotEnoughSeatException e3) {
+								
+							}
+							
+						});
+						Button cancel = new Button("Cancel");
+						cancel.setOnMouseClicked(e2 -> {
+							
+						});
+						checkWindow.getChildren().add(confirm);
 
 						checkStage.setTitle("Check");
 						checkStage.setScene(checkScene);
 						checkStage.show();
 					});
+					orderWindow.getChildren().add(check);
 				}
 
 				Button close = new Button("Close");
