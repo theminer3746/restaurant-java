@@ -26,9 +26,17 @@ public class TableList {
 	private void populateTableData() {
 		tables.add(new NormalTable("01A", 4, 0, 0));
 		tables.add(new NormalTable("02A", 6, 1, 0));
-		tables.add(new NormalTable("03A", 8, 0, 1));
-		tables.add(new NormalTable("04A", 2, 1, 1));
-		tables.add(new PrivateTable("01B", 10, 3, 4));
+		tables.add(new NormalTable("03A", 4, 2, 0));
+		tables.add(new NormalTable("04A", 4, 3, 0));
+		tables.add(new NormalTable("05A", 4, 4, 0));
+		tables.add(new NormalTable("06A", 8, 0, 1));
+		tables.add(new NormalTable("07A", 2, 1, 1));
+		tables.add(new NormalTable("08A", 2, 2, 1));
+		tables.add(new NormalTable("09A", 4, 3, 1));
+		tables.add(new NormalTable("10A", 4, 4, 1));
+		
+		tables.add(new PrivateTable("01B", 10, 1, 3));
+		tables.add(new PrivateTable("02B", 10, 3, 3));
 		
 		//JSONArray arr = new JSONArray();
 		
