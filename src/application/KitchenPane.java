@@ -1,5 +1,6 @@
 package application;
 
+import Table.Table;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
@@ -58,7 +59,14 @@ public class KitchenPane extends VBox {
 						notify.showExceedServePosError();
 					} else {
 						logOrderList.remove(pos - 1);
-						restaurant.serve(pos - 1);
+						String name = restaurant.getKitchen().getOrderList().getOrders().get(pos-1).getName();
+						int amount = restaurant.getKitchen().getOrderList().getOrders().get(pos-1).getAmount();
+						Table table =  restaurant.serve(pos - 1);
+						table.addServedOrder(new Label(
+							"Table's Number : " + table.getTableNumber() + ", " + name + " " + amount));
+						servePos.setText("");
+						
+						
 					}
 				} catch (NumberFormatException e1) {
 					if (servePos.getText().isEmpty()) {
@@ -76,8 +84,48 @@ public class KitchenPane extends VBox {
 			}
 		});
 		serveTab.getChildren().addAll(servePos, serveBtn);
+		
+		HBox cancelTab = new HBox();
+		cancelTab.setSpacing(5);
+		cancelTab.setAlignment(Pos.CENTER_RIGHT);
+		Button cancelBtn = new Button("Cancel");
+		TextField cancelPos = new TextField();
+		cancelPos.setPromptText("Cancel Order Number");
+		cancelBtn.setOnMouseClicked(e -> {
 
-		getChildren().addAll(logListView, serveTab);
+			if (!logOrderList.isEmpty()) {
+				try {
+					int pos = Integer.parseInt(cancelPos.getText());
+					if (pos <= 0) {
+						Notify notify = new Notify(AlertType.ERROR);
+						notify.showNegativeServePosError();
+
+					} else if (pos > logOrderList.size()) {
+						Notify notify = new Notify(AlertType.ERROR);
+						notify.showExceedServePosError();
+					} else {
+						logOrderList.remove(pos - 1);
+						restaurant.cancel(pos - 1);
+						cancelPos.setText("");
+					}
+				} catch (NumberFormatException e1) {
+					if (cancelPos.getText().isEmpty()) {
+						Notify notify = new Notify(AlertType.ERROR);
+						notify.showEmptyServePosTextFieldError();
+
+					} else {
+						Notify notify = new Notify(AlertType.ERROR);
+						notify.showIncorrectServePosFormatError();
+					}
+				}
+			} else {
+				Notify notify = new Notify(AlertType.ERROR);
+				notify.showEmptyOrderError();
+			}
+		});
+		cancelTab.getChildren().addAll(cancelPos, cancelBtn);
+
+		getChildren().addAll(logListView, serveTab, cancelTab);
 
 		this.status = false;
 	}
