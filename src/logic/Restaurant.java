@@ -6,10 +6,12 @@ public class Restaurant {
 	private static Restaurant instance;
 	private TableList tableList;
 	private MenuList menuList;
+	private Kitchen kitchen;
 	
 	private Restaurant() {
 		tableList = TableList.getInstance();
 		menuList = MenuList.getInstance();
+		kitchen = Kitchen.getInstance();
 	}
 	
 	public static Restaurant getInstance() {
@@ -34,5 +36,13 @@ public class Restaurant {
 
 	public void setMenuList(MenuList menuList) {
 		this.menuList = menuList;
+	}
+
+	public Kitchen getKitchen() {
+		return kitchen;
+	}
+
+	public void setKitchen(Kitchen kitchen) {
+		this.kitchen = kitchen;
 	}
 }
