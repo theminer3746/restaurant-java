@@ -7,17 +7,21 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import logic.Menu;
+import logic.Order;
+import logic.OrderList;
 
 public class OrderInput extends HBox {
 
-	public OrderInput(Table table, String name) {
-		setAlignment(Pos.CENTER_LEFT);
-		setSpacing(60);
-		Label orderName = new Label(name);
+	public OrderInput(Table table, Menu menu, OrderList orderList, KitchenPane kitchenPane) {
+		setAlignment(Pos.CENTER_RIGHT);
+		setSpacing(5);
+		Label orderName = new Label(menu.getName());
 		TextField quantity = new TextField();
 		quantity.setPromptText("Quantity");
-		Button order = new Button("Order");
-		order.setOnMouseClicked(e -> {
+		Button orderBtn = new Button("Order");
+		orderBtn.setOnMouseClicked(e -> {
 			try {
 				int amount = Integer.parseInt(quantity.getText());
 				if (amount <= 0) {
@@ -25,7 +29,10 @@ public class OrderInput extends HBox {
 					notify.showNegativeQuantityError();
 
 				} else {
-					// create new order add to orderlist
+					Order order = new Order(menu, table);
+					order.setAmount(amount);
+					orderList.addToOrders(order);
+					kitchenPane.order(new Label("Table's Number : " + table.getTableNumber() + ", " + menu.getName() + amount));
 					/// place order
 
 				}
@@ -40,6 +47,6 @@ public class OrderInput extends HBox {
 				}
 			}
 		});
-		getChildren().addAll(orderName, quantity, order);
+		getChildren().addAll(orderName, quantity, orderBtn);
 	}
 }
