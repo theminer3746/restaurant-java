@@ -38,6 +38,10 @@ public abstract class Table implements Billable {
 	}
 
 	public abstract double calculateServiceCharge(double bill);
+	
+	public String getFormattedServiceCharge(double bill) {
+		return numberFormat.format(calculateServiceCharge(bill));
+	}
 
 	public double getTotal() {
 		return bill.getBillableTotal() + getPrice();
