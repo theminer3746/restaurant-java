@@ -19,7 +19,7 @@ public class Main extends Application {
 	private double yOffset = 0;
 
 	TableGrid tableGrid;
-	KitchenPane kitchen;
+	KitchenPane kitchenPane;
 
 	Restaurant restaurant;
 
@@ -28,9 +28,9 @@ public class Main extends Application {
 
 		restaurant = Restaurant.getInstance();
 
-		tableGrid = new TableGrid(restaurant.getTableList());
-		kitchen = new KitchenPane();
-
+		kitchenPane = new KitchenPane(restaurant);
+		tableGrid = new TableGrid(restaurant, kitchenPane);
+		
 		primaryStage.initStyle(StageStyle.TRANSPARENT);
 
 		VBox root = new VBox();
@@ -57,7 +57,7 @@ public class Main extends Application {
 		root.setMinWidth(750);
 		root.setMinHeight(400);
 
-		Tabs tabs = new Tabs(root, tableGrid, kitchen);
+		Tabs tabs = new Tabs(root, tableGrid, kitchenPane);
 		root.getChildren().addAll(tabs);
 
 		primaryStage.setTitle("Restaurant");
