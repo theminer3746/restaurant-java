@@ -34,6 +34,7 @@ public class OrderInput extends HBox {
 					orderList.addToOrders(order);
 					kitchenPane.order(new Label("Table's Number : " + table.getTableNumber() + ", " + menu.getName() + amount));
 					/// place order
+					quantity.setText("");
 
 				}
 			} catch (NumberFormatException e1) {
