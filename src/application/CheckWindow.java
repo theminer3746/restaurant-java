@@ -2,7 +2,6 @@ package application;
 
 import Exception.NotEnoughSeatException;
 import Table.Table;
-import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -29,8 +28,9 @@ public class CheckWindow extends Stage {
 
 	private ListView<Label> logListView;
 
-	public CheckWindow(Table table, Button tableBtn, Stage stage, ObservableList<Label> logServeList,
+	public CheckWindow(Table table, Button tableBtn, Stage stage,
 			TableGrid tableGrid, KitchenPane kitchenPane, Restaurant restaurant) {
+		
 		VBox checkWindow = new VBox();
 		Scene checkScene = new Scene(checkWindow);
 		checkScene.getStylesheets().add("Restaurant.css");
@@ -38,7 +38,7 @@ public class CheckWindow extends Stage {
 		checkWindow.setPadding(new Insets(5));
 		checkWindow.setAlignment(Pos.CENTER_RIGHT);
 
-		logListView = new ListView<Label>(logServeList);
+		logListView = new ListView<Label>(table.getServedOrderList());
 		logListView.setPrefWidth(250);
 		logListView.setFocusTraversable(false);
 		logListView.setBackground(new Background(new BackgroundFill(Color.IVORY, null, null)));
@@ -67,33 +67,39 @@ public class CheckWindow extends Stage {
 					Notify notify = new Notify(AlertType.ERROR);
 					notify.showNegativePaymentAmountError();
 					
-				} else if (amount < Integer.parseInt(table.getFormattedTotal())) {
+				} else if (amount < Double.parseDouble(table.getFormattedTotal())) {
 					Notify notify = new Notify(AlertType.ERROR);
 					notify.showNotEnoughPaymentAmountError();
 					
 				} else {
-					Stage confirmationStage = new Stage();
-					VBox confirmationBox = new VBox();
-					confirmationBox.setAlignment(Pos.CENTER_RIGHT);
-					Label change = new Label("Change is " + (amount - Integer.parseInt(table.getFormattedTotal())));
-					Button close = new Button("Close");
-					close.setOnMouseClicked(e4 -> {
-						table.setBill(new Bill());
-						try {
-							table.setGuestAmount(0);
-						} catch (NotEnoughSeatException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-						tableGrid.getChildren().remove(tableBtn);
-						tableGrid.AddTable(table, restaurant, kitchenPane);
-						logServeList.clear();
-						confirmationStage.close();
-						close();
-						stage.close();
-					});
-					confirmationBox.getChildren().addAll(change, close);
 					
+						Stage confirmationStage = new Stage();
+						VBox confirmationBox = new VBox();
+						confirmationBox.setPrefWidth(150);
+						confirmationBox.setSpacing(5);
+						confirmationBox.setPadding(new Insets(5));
+						Scene confirmScene = new Scene(confirmationBox);
+						confirmationBox.setAlignment(Pos.CENTER);
+						Label change = new Label("Change is " + (amount - Double.parseDouble(table.getFormattedTotal())));
+						Button close = new Button("Close");
+						close.setOnMouseClicked(e4 -> {
+							try {
+								table.setBill(new Bill());
+								table.setGuestAmount(0);
+								tableGrid.getChildren().remove(tableBtn);
+								tableGrid.AddTable(table, restaurant, kitchenPane);
+								table.getServedOrderList().clear();
+								confirmationStage.close();
+								this.close();
+								stage.close();
+							} catch (NotEnoughSeatException e) {
+								e.printStackTrace();
+							}
+						});
+						confirmationBox.getChildren().addAll(change, close);
+						confirmationStage.setTitle("Confirm Change");
+						confirmationStage.setScene(confirmScene);
+						confirmationStage.show();
 					
 				}
 			} catch (NumberFormatException e4) {
@@ -123,5 +129,5 @@ public class CheckWindow extends Stage {
 		tableBtn.getStyleClass().clear();
 		tableBtn.getStyleClass().add(table.getClass().getSimpleName());
 	}
-	
+
 }
