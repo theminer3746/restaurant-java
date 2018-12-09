@@ -20,14 +20,16 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import logic.Bill;
+import logic.Restaurant;
 
 public class CheckWindow extends Stage {
 	
 	private ListView<Label> logListView;
 	
-	public CheckWindow(Table table, Button tableBtn, Stage stage, ObservableList<Label> logServeList) {
+	public CheckWindow(Table table, Button tableBtn, Stage stage, ObservableList<Label> logServeList, TableGrid tableGrid, KitchenPane kitchenPane, Restaurant restaurant) {
 		VBox checkWindow = new VBox();
 		Scene checkScene = new Scene(checkWindow);
+		checkScene.getStylesheets().add("Restaurant.css");
 		checkWindow.setSpacing(5);
 		checkWindow.setPadding(new Insets(5));
 		checkWindow.setAlignment(Pos.CENTER_RIGHT);
@@ -42,15 +44,15 @@ public class CheckWindow extends Stage {
 		
 		Label serviceCharge = new Label("Service Charge : " + table.calculateServiceCharge(table.getTotal()));
 		
-		Label total = new Label("Total : " + (table.calculateServiceCharge(table.getTotal()) + table.getTotal()));
+		Label total = new Label("Total : " + (table.getTotal()));
 		
 		Button confirm = new Button("Confirm");
 		confirm.setOnMouseClicked(e2 -> {
 			try {
 				table.setBill(new Bill());
 				table.setGuestAmount(0);
-				tableBtn.getStyleClass().clear();
-				tableBtn.getStyleClass().add(table.getClass().getSimpleName());
+				tableGrid.getChildren().remove(tableBtn);
+				tableGrid.AddTable(table, restaurant, kitchenPane);
 				logServeList.clear();
 				close();
 				stage.close();
@@ -70,8 +72,9 @@ public class CheckWindow extends Stage {
 		show();
 	}
 	
-	/*public void addOrder(Label label) {
-		logOrdersList.add(label);
-	}*/
+	public void setCSS(Button tableBtn, Table table) {
+		tableBtn.getStyleClass().clear();
+		tableBtn.getStyleClass().add(table.getClass().getSimpleName());
+	}
 
 }
