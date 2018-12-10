@@ -6,7 +6,7 @@ public class PrivateTable extends Table {
 	public PrivateTable(String tableNumber, int maximumGuest, int posx, int posy) {
 		super(tableNumber, maximumGuest, posx, posy);
 	}
-	
+
 	public PrivateTable() {
 		super();
 	}
@@ -15,7 +15,7 @@ public class PrivateTable extends Table {
 	public double calculateServiceCharge(double price) {
 		return this.guestAmount * SERVICE_CHARGE_RATE * price;
 	}
-	
+
 	@Override
 	public double getPrice() {
 		return this.guestAmount * SERVICE_CHARGE_RATE * bill.getBillableTotal();

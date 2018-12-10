@@ -82,9 +82,12 @@ public class CheckWindow extends Stage {
 					confirmationBox.setPadding(new Insets(5));
 					Scene confirmScene = new Scene(confirmationBox);
 					confirmationBox.setAlignment(Pos.CENTER);
-					/*Label change = new Label("Change is " + NumberFormat.getInstance()
-							.format((amount - Double.parseDouble(table.getFormattedTotal()))));*/
-					Label change = new Label("Change is " + NumberFormat.getInstance().format(amount - table.getTotal()));
+					/*
+					 * Label change = new Label("Change is " + NumberFormat.getInstance()
+					 * .format((amount - Double.parseDouble(table.getFormattedTotal()))));
+					 */
+					Label change = new Label(
+							"Change is " + NumberFormat.getInstance().format(amount - table.getTotal()));
 					Button close = new Button("Close");
 					close.setOnMouseClicked(e4 -> {
 						try {

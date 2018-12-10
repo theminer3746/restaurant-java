@@ -10,7 +10,7 @@ public class NormalTable extends Table {
 	public NormalTable() {
 		super();
 	}
-	
+
 	@Override
 	public double calculateServiceCharge(double price) {
 		return price * SERVICE_CHARGE_RATE;

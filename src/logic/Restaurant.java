@@ -11,7 +11,7 @@ public class Restaurant {
 	private MenuList menuList;
 	private Kitchen kitchen;
 	private NumberFormat numberFormat;
-	
+
 	private Restaurant() {
 		tableList = TableList.getInstance();
 		menuList = MenuList.getInstance();
@@ -19,12 +19,12 @@ public class Restaurant {
 		numberFormat = NumberFormat.getInstance();
 		numberFormat.setMaximumFractionDigits(2);
 	}
-	
+
 	public static Restaurant getInstance() {
-		if(instance == null) {
+		if (instance == null) {
 			instance = new Restaurant();
 		}
-		
+
 		return instance;
 	}
 
@@ -34,11 +34,11 @@ public class Restaurant {
 		tableList.getTables().get(indexOfTableToServe).getBill().addToBill(toServe);
 		return tableList.getTables().get(indexOfTableToServe);
 	}
-	
+
 	public void cancel(int n) {
 		kitchen.getOrderList().getOrders().remove(n);
 	}
-	
+
 	public TableList getTableList() {
 		return tableList;
 	}

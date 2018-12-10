@@ -3,7 +3,7 @@ package Exception;
 public class NotEnoughSeatException extends Exception {
 
 	private int maxSeat;
-	
+
 	/**
 	 * 
 	 */
@@ -12,7 +12,7 @@ public class NotEnoughSeatException extends Exception {
 	public NotEnoughSeatException() {
 		super();
 	}
-	
+
 	public NotEnoughSeatException(int maxSeat) {
 		super();
 		this.maxSeat = maxSeat;
@@ -25,5 +25,5 @@ public class NotEnoughSeatException extends Exception {
 	public void setMaxSeat(int maxSeat) {
 		this.maxSeat = maxSeat;
 	}
-	
+
 }

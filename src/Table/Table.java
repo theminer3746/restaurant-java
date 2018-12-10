@@ -42,7 +42,7 @@ public abstract class Table implements Billable {
 	}
 
 	public abstract double calculateServiceCharge(double bill);
-	
+
 	public String getFormattedServiceCharge(double bill) {
 		return numberFormat.format(calculateServiceCharge(bill));
 	}
@@ -114,11 +114,11 @@ public abstract class Table implements Billable {
 	public void setPosy(int posy) {
 		this.posy = posy;
 	}
-	
+
 	public ObservableList<Label> getServedOrderList() {
 		return this.servedOrderList;
 	}
-	
+
 	public void addServedOrder(Label lebel) {
 		this.servedOrderList.add(lebel);
 	}

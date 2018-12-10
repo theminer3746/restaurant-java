@@ -65,12 +65,12 @@ public class Notify {
 	public void showIncorrectServePosFormatError() {
 		this.setTitle("Error").setHeaderText("Error").setContentText("Incorrect Order's Number Format").show();
 	}
-	
+
 	///// Check ERROR
 	public void showNegativePaymentAmountError() {
 		this.setTitle("Error").setHeaderText("Error").setContentText("The Payment Must Be Positive").show();
 	}
-	
+
 	public void showNotEnoughPaymentAmountError() {
 		this.setTitle("Error").setHeaderText("Error").setContentText("The Payment Is Less Than Total Price").show();
 	}
