@@ -26,7 +26,6 @@ public abstract class Table implements Billable {
 		this.posx = posx;
 		this.posy = posy;
 		this.numberFormat = NumberFormat.getInstance();
-		numberFormat.setMaximumFractionDigits(2);
 		this.ServedOrderList = FXCollections.observableArrayList();
 	}
 

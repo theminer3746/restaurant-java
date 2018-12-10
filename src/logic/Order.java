@@ -18,7 +18,6 @@ public class Order implements Billable {
 		this.table = table;
 		this.uuid = UUID.randomUUID();
 		this.numberFormat = NumberFormat.getInstance();
-		numberFormat.setMaximumFractionDigits(2);
 	}
 
 	@Override

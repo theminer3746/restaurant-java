@@ -1,10 +1,6 @@
 package Table;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.util.ArrayList;
-
-import jdk.nashorn.internal.parser.JSONParser;
 
 public class TableList {
 	private static TableList instance;
@@ -37,20 +33,9 @@ public class TableList {
 		
 		tables.add(new PrivateTable("01B", 10, 1, 3));
 		tables.add(new PrivateTable("02B", 10, 3, 3));
-		
-		//JSONArray arr = new JSONArray();
-		
-		/*try {
-			String uri = ClassLoader.getSystemResource("tables.json").toString();
-			FileReader fileReader = new FileReader(uri);
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
 	}
 	
 	public void addTableToList(Table table) {
-		//TODO
 		this.tables.add(table);
 	}
 
