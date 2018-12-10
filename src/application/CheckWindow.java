@@ -28,11 +28,11 @@ import logic.Restaurant;
 
 public class CheckWindow extends Stage {
 
-	private ListView<Label> logListView;
+	private ListView<Label> logServedView;
 
-	public CheckWindow(Table table, Button tableBtn, Stage stage,
-			TableGrid tableGrid, KitchenPane kitchenPane, Restaurant restaurant) {
-		
+	public CheckWindow(Table table, Button tableBtn, Stage stage, TableGrid tableGrid, KitchenPane kitchenPane,
+			Restaurant restaurant) {
+
 		VBox checkWindow = new VBox();
 		Scene checkScene = new Scene(checkWindow);
 		checkScene.getStylesheets().add("Restaurant.css");
@@ -40,72 +40,74 @@ public class CheckWindow extends Stage {
 		checkWindow.setPadding(new Insets(5));
 		checkWindow.setAlignment(Pos.CENTER_RIGHT);
 
-		logListView = new ListView<Label>(table.getServedOrderList());
-		logListView.setPrefWidth(250);
-		logListView.setFocusTraversable(false);
-		logListView.setBackground(new Background(new BackgroundFill(Color.IVORY, null, null)));
-		logListView.setPlaceholder(new Label("No Orders"));
-		logListView.setBorder(new Border(
+		logServedView = new ListView<Label>(table.getServedOrderList());
+		// logServedView.setPrefWidth(250);
+		logServedView.setFocusTraversable(false);
+		logServedView.setBackground(new Background(new BackgroundFill(Color.IVORY, null, null)));
+		logServedView.setPlaceholder(new Label("No Order"));
+		logServedView.setBorder(new Border(
 				new BorderStroke(Color.BLUE, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
 
 		Label serviceCharge = new Label(
 				"Service Charge : " + table.getFormattedServiceCharge(table.getBillableTotal()));
 
 		Label total = new Label("Total : " + table.getFormattedTotal());
-		
-		Label recievelabel = new Label("Recieve Total");
-		TextField recieve = new TextField();
-		recieve.setPromptText("Recieve Total :");
+
+		Label receivelabel = new Label("Receive Total");
+		TextField receive = new TextField();
+		receive.setPromptText("Receive Total :");
 		HBox payment = new HBox();
-		payment.setAlignment(Pos.CENTER_RIGHT);
 		payment.setSpacing(5);
-		payment.getChildren().addAll(recievelabel, recieve);
+		payment.setAlignment(Pos.CENTER_RIGHT);
+		payment.getChildren().addAll(receivelabel, receive);
 
 		Button confirm = new Button("Confirm");
 		confirm.setOnMouseClicked(e2 -> {
 			try {
-				double amount = Double.parseDouble(recieve.getText());
+				double amount = Double.parseDouble(receive.getText());
 				if (amount <= 0) {
 					Notify notify = new Notify(AlertType.ERROR);
 					notify.showNegativePaymentAmountError();
-					
-				} else if (amount < Double.parseDouble(table.getFormattedTotal())) {
+
+				} else if (amount < table.getBillableTotal()) {
 					Notify notify = new Notify(AlertType.ERROR);
 					notify.showNotEnoughPaymentAmountError();
-					
+
 				} else {
-					
-						Stage confirmationStage = new Stage();
-						VBox confirmationBox = new VBox();
-						confirmationBox.setPrefWidth(150);
-						confirmationBox.setSpacing(5);
-						confirmationBox.setPadding(new Insets(5));
-						Scene confirmScene = new Scene(confirmationBox);
-						confirmationBox.setAlignment(Pos.CENTER);
-						Label change = new Label("Change is " + NumberFormat.getInstance().format((amount - Double.parseDouble(table.getFormattedTotal()))));
-						Button close = new Button("Close");
-						close.setOnMouseClicked(e4 -> {
-							try {
-								table.setBill(new Bill());
-								table.setGuestAmount(0);
-								tableGrid.getChildren().remove(tableBtn);
-								tableGrid.AddTable(table, restaurant, kitchenPane);
-								table.getServedOrderList().clear();
-								confirmationStage.close();
-								this.close();
-								stage.close();
-							} catch (NotEnoughSeatException e) {
-								e.printStackTrace();
-							}
-						});
-						confirmationBox.getChildren().addAll(change, close);
-						confirmationStage.setTitle("Confirm Change");
-						confirmationStage.setScene(confirmScene);
-						confirmationStage.show();
-					
+
+					Stage confirmationStage = new Stage();
+					VBox confirmationBox = new VBox();
+					confirmationBox.setPrefWidth(150);
+					confirmationBox.setSpacing(5);
+					confirmationBox.setPadding(new Insets(5));
+					Scene confirmScene = new Scene(confirmationBox);
+					confirmationBox.setAlignment(Pos.CENTER);
+					/*Label change = new Label("Change is " + NumberFormat.getInstance()
+							.format((amount - Double.parseDouble(table.getFormattedTotal()))));*/
+					Label change = new Label("Change is " + (amount - table.getBillableTotal()));
+					Button close = new Button("Close");
+					close.setOnMouseClicked(e4 -> {
+						try {
+							table.setBill(new Bill());
+							table.setGuestAmount(0);
+							tableGrid.getChildren().remove(tableBtn);
+							tableGrid.AddTable(table, restaurant, kitchenPane);
+							table.getServedOrderList().clear();
+							confirmationStage.close();
+							this.close();
+							stage.close();
+						} catch (NotEnoughSeatException e) {
+							e.printStackTrace();
+						}
+					});
+					confirmationBox.getChildren().addAll(change, close);
+					confirmationStage.setTitle("Confirm Change");
+					confirmationStage.setScene(confirmScene);
+					confirmationStage.show();
+
 				}
 			} catch (NumberFormatException e4) {
-				if (recieve.getText().isEmpty()) {
+				if (receive.getText().isEmpty()) {
 					Notify notify = new Notify(AlertType.ERROR);
 					notify.showEmptyPaymentTextFieldError();
 
@@ -120,16 +122,10 @@ public class CheckWindow extends Stage {
 		cancel.setOnMouseClicked(e2 -> {
 			close();
 		});
-		checkWindow.getChildren().addAll(logListView, serviceCharge, total, payment, confirm, cancel);
+		checkWindow.getChildren().addAll(logServedView, serviceCharge, total, payment, confirm, cancel);
 
 		setTitle("Check");
 		setScene(checkScene);
 		show();
 	}
-
-	public void setCSS(Button tableBtn, Table table) {
-		tableBtn.getStyleClass().clear();
-		tableBtn.getStyleClass().add(table.getClass().getSimpleName());
-	}
-
 }
