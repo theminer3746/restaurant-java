@@ -1,10 +1,7 @@
 package application;
 
 import Table.Table;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.ColumnConstraints;
@@ -15,7 +12,7 @@ import logic.Restaurant;
 
 public class TableGrid extends GridPane {
 
-	boolean status;
+	private boolean status;
 
 	public TableGrid(Restaurant restaurant, KitchenPane kitchenPane) {
 		getStylesheets().add("Restaurant.css");
@@ -35,13 +32,11 @@ public class TableGrid extends GridPane {
 		Button tableBtn = new Button(table.getTableNumber());
 		tableBtn.getStyleClass().add(table.getClass().getSimpleName());
 
-		ObservableList<Label> logServeList = FXCollections.observableArrayList();
-
 		tableBtn.setOnAction(e -> {
 			if (table.getGuestAmount() <= 0) {
 				new SeatingWindow(table, tableBtn);
 			} else {
-				new OrderWindow(table, tableBtn, restaurant, kitchenPane, logServeList, this);
+				new OrderWindow(table, tableBtn, restaurant, kitchenPane, this);
 			}
 
 		});

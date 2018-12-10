@@ -1,7 +1,6 @@
 package application;
 
 import Table.Table;
-import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -17,7 +16,7 @@ import logic.Restaurant;
 
 public class OrderWindow extends Stage {
 	public OrderWindow(Table table, Button tableBtn, Restaurant restaurant, KitchenPane kitchenPane,
-			ObservableList<Label> logServeList, TableGrid tableGrid) {
+			TableGrid tableGrid) {
 		VBox orderWindow = new VBox();
 		orderWindow.setMinWidth(250);
 		orderWindow.setAlignment(Pos.TOP_CENTER);
@@ -29,8 +28,8 @@ public class OrderWindow extends Stage {
 		orderWindow.getChildren().add(label);
 
 		for (Menu menu : restaurant.getMenuList().getMenus()) {
-			orderWindow.getChildren().add(
-					new OrderInput(table, menu, restaurant.getKitchen().getOrderList(), kitchenPane, logServeList));
+			orderWindow.getChildren()
+					.add(new OrderInput(table, menu, restaurant.getKitchen().getOrderList(), kitchenPane));
 		}
 
 		if (table.getBill().getBillableTotal() != 0) {
