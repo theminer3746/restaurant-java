@@ -59,14 +59,13 @@ public class KitchenPane extends VBox {
 						notify.showExceedServePosError();
 					} else {
 						logOrderList.remove(pos - 1);
-						String name = restaurant.getKitchen().getOrderList().getOrders().get(pos-1).getName();
-						int amount = restaurant.getKitchen().getOrderList().getOrders().get(pos-1).getAmount();
-						Table table =  restaurant.serve(pos - 1);
-						table.addServedOrder(new Label(
-							"Table's Number : " + table.getTableNumber() + ", " + name + " " + amount));
+						String name = restaurant.getKitchen().getOrderList().getOrders().get(pos - 1).getName();
+						int amount = restaurant.getKitchen().getOrderList().getOrders().get(pos - 1).getAmount();
+						Table table = restaurant.serve(pos - 1);
+						table.addServedOrder(
+								new Label("Table's Number : " + table.getTableNumber() + ", " + name + " " + amount));
 						servePos.setText("");
-						
-						
+
 					}
 				} catch (NumberFormatException e1) {
 					if (servePos.getText().isEmpty()) {
@@ -84,7 +83,7 @@ public class KitchenPane extends VBox {
 			}
 		});
 		serveTab.getChildren().addAll(servePos, serveBtn);
-		
+
 		HBox cancelTab = new HBox();
 		cancelTab.setSpacing(5);
 		cancelTab.setAlignment(Pos.CENTER_RIGHT);
