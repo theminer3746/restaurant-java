@@ -10,7 +10,7 @@ import logic.Bill;
 import logic.Billable;
 
 public abstract class Table implements Billable {
-	private ObservableList<Label> ServedOrderList;
+	private ObservableList<Label> servedOrderList;
 	protected Bill bill;
 	protected String tableNumber;
 	protected int guestAmount;
@@ -26,7 +26,7 @@ public abstract class Table implements Billable {
 		this.posx = posx;
 		this.posy = posy;
 		this.numberFormat = NumberFormat.getInstance();
-		this.ServedOrderList = FXCollections.observableArrayList();
+		this.servedOrderList = FXCollections.observableArrayList();
 	}
 
 	public Table() {
@@ -116,10 +116,10 @@ public abstract class Table implements Billable {
 	}
 	
 	public ObservableList<Label> getServedOrderList() {
-		return this.ServedOrderList;
+		return this.servedOrderList;
 	}
 	
 	public void addServedOrder(Label lebel) {
-		this.ServedOrderList.add(lebel);
+		this.servedOrderList.add(lebel);
 	}
 }
