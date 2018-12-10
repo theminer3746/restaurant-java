@@ -1,7 +1,7 @@
 package logic;
 
 public interface Billable {
-	double getPrice();
+	public double getPrice();
 
-	String getName();
+	public String getName();
 }
